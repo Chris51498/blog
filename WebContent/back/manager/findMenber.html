@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>浏览会员</title>
+
+		<!--1.引入easyUI样式文件-->
+		<link rel="stylesheet" type="text/css" href="../css/easyui.css"/>
+		<!--2.引入图标的样式文件-->
+		<link rel="stylesheet" type="text/css" href="../css/icon.css"/>
+		<!--3.引入jQuery文件-->
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--4.引入easyUI js文件-->
+		<script src="../js/jquery.easyui.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--语言支持 简体中文-->
+		<script src="../js/easyui-lang-zh_CN.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+</head>
+<body class="easyui-layout">
+<!-- 
+	<div class="yc_login_menu">
+		<ul>
+			<li><label>用户名：</label><input type="text" name="aname" style="height:25px"></li>
+			<li><label>手机号码：</label><input type="text" name="tel" style="height:25px"></li>
+			<li><label>密码：</label><input type="password" name="pwd" style="height:25px"></li>
+			<li><a class="easyui-linkbutton" data-options="plain:true" href="javascript:add()">添加</a></li>
+		</ul>
+	</div>
+	
+	<hr>
+ -->	
+	<div class="yc_find_menu">
+		<ul>
+			<li><label>真实姓名：</label><input type="text" name="realName" style="height:25px"></li>
+			<li><a class="easyui-linkbutton" data-options="plain:true" href="javascript:find()">查询</a></li>
+		</ul>
+	</div>
+	 <table id="show_menber"></table>
+	 
+	 <script type="text/javascript">
+	//加载数据
+	$('#show_menber').datagrid({    
+	    url:'../../menber.action?op=findPage',
+	    pagination:true,	//分页
+	    pageList:[3,5,10,20],	//设置每页显示条数
+	    pageSize:3,	//默认每页显示的条数
+	    toolbar:[{			//按钮
+			iconCls: 'icon-reload',
+			handler: function(){
+				$('#show_menber').datagrid('reload');
+			}
+		},'-',{
+			iconCls: 'icon-add',
+			handler: function(){alert('添加')}
+		}],
+	    columns:[[
+	        {field:'mno',title:'会员编号',width:'10%',align:'center'},    
+	        {field:'nickName',title:'会员昵称',width:'10%',align:'center'},
+	        {field:'realName',title:'真实名称',width:'10%',align:'center'}, 
+	        {field:'pwd',title:'密码',width:'10%',align:'center',formatter:function(value,row,index){
+	        	return '***************';
+	        }},
+	        {field:'tel',title:'电话号码',width:'10%',align:'center'}, 
+	        {field:'email',title:'会员邮箱',width:'10%',align:'center'},
+	        {field:'photo',title:'图片',width:'10%',align:'center',formatter:function(value,row,index){
+	        	 if(value!=null&&value.length>0){
+	        	 	var img = "../../"+value;
+	        	    return "<img src='"+img+"' style='width:100px; height: 100px;'>";
+	        	 }else{
+	        	    return "<span> </span>";
+	        	 }
+	        }},
+	        {field:'regDate',title:'注册时间',width:'10%',align:'center'}, 
+	        {field:'status',title:'状态',width:'10%',align:'center'},
+	        {field:'aa',title:'操作',width:'10%',align:'center',formatter:function(value,row,index){
+	        	return '<a href="javascript:resetPwd('+row.aid+')">[重置密码]</a>'
+	        		+'<a href="javascript:status('+row.aid+')">[修改状态]</a>';
+	        }}
+	    ]]    
+	});  
+	
+	
+	//重置密码
+	function resetPwd(aid){
+		alert(aid);
+	}
+	
+	//修改状态
+	function status(aid){
+		alert(aid);
+	}
+	
+	
+	//查询
+	function find(){
+		var name = $('.yc_find_menu input[name="realName"]').val();
+		$('#show_menber').datagrid('reload',{realName:name});
+		
+	}
+</script>
+	
+</body>
+
+</html>

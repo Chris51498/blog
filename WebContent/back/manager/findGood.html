@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>浏览商品</title>
+
+		<!--1.引入easyUI样式文件-->
+		<link rel="stylesheet" type="text/css" href="../css/easyui.css"/>
+		<!--2.引入图标的样式文件-->
+		<link rel="stylesheet" type="text/css" href="../css/icon.css"/>
+		<!--3.引入jQuery文件-->
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--4.引入easyUI js文件-->
+		<script src="../js/jquery.easyui.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--语言支持 简体中文-->
+		<script src="../js/easyui-lang-zh_CN.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+</head>
+<body class="easyui-layout">
+ 
+	<div class="yc_find_menu">
+		<ul>
+			<li><label>商品名：</label><input type="text" name="gname" style="height:25px"></li>
+			<li><a class="easyui-linkbutton" data-options="plain:true" href="javascript:find()">查询</a></li>
+		</ul>
+	</div>
+	<hr>
+
+	 <table id="show_goods"></table>
+	 
+	 <script type="text/javascript">
+	//加载数据
+	$('#show_goods').datagrid({    
+	    url:'../../goods.action?op=findPage',
+	    pagination:true,	//分页
+	    pageList:[5,10,15,20],	//设置每页显示条数
+	    pageSize:10,	//默认每页显示的条数
+	    toolbar:[{			//按钮
+			iconCls: 'icon-reload',
+			handler: function(){
+				$('#show_goods').datagrid('reload');
+			}
+		},'-',{
+			iconCls: 'icon-add',
+			handler: function(){alert('添加')}
+		}],
+	    columns:[[
+	        {field:'gno',title:'商品编号',width:'10%',align:'center'},    
+	        {field:'gname',title:'商品名称',width:'10%',align:'center'},    
+	        {field:'tno',title:'商品类型',width:'10%',align:'center'},
+	        {field:'price',title:'价格',width:'10%',align:'center'},
+	        {field:'intro',title:'简介',width:'20%',align:'center'},
+	        {field:'balance',title:'库存',width:'10%',align:'center'},
+	        {field:'pics',title:'图片',width:'10%',align:'center',formatter:function(value,row,index){
+	        	 if(value!=null&&value.length>0){
+	        	 	var img = "../../"+value;
+	        	    return "<img src='"+img+"' style='width:100px; height: 100px;'>";
+	        	 }else{
+	        	    return "<span> </span>";
+	        	 }
+	        }},
+	        {field:'unit',title:'单位',width:'10%',align:'center'},
+	        {field:'qperied',title:'保质期',width:'10%',align:'center'},
+	        {field:'weight',title:'净重',width:'10%',align:'center'},
+	        {field:'descr',title:'描述',width:'20%',align:'center'}
+	        /* {field:'intro',title:'简介',width:'20%',align:'center',formatter:function(value,row,index){
+	        	return '<a href="javascript:resetPwd('+row.aid+')">重置密码</a>';
+	        }} */
+	    ]]    
+	});  
+	
+	
+
+	
+	
+	//查询
+	function find(){
+		var name = $('.yc_find_menu input[name="gname"]').val();
+		$('#show_goods').datagrid('reload',{gname:name});
+		
+	}
+</script>
+	
+</body>
+
+
+
+</html>
