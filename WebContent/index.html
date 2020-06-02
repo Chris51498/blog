@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<style type="text/css">
+			#yc_login{
+				width: 400px;
+				text-align:center;
+				margin: 0 auto;
+			}
+			
+			#yc_personal{
+				background-color: cadetblue;
+				width: 200px; 
+				height: 200px;
+				position: fixed;
+				top: 300px;
+				left: 160px;
+			}
+		</style>
+	</head>
+
+	<body>
+	
+		<div id="yc_personal">
+			
+		</div>
+	
+		<div class="container" style="width: 50%;">
+			<!-- 模态框（Modal） 登录-->
+			<div class="modal fade" id="myModal_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content" id="yc_login">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								&times;
+							</button>
+							<h4 class="modal-title" id="myModalLabel">
+								<label style="align-content: center;">登录</label>
+							</h4>
+						</div>
+						
+						<div class="modal-body" >
+							<form class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="firstname" class="col-sm-3 control-label">昵&nbsp;&nbsp;&nbsp;&nbsp;称</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="firstname" placeholder="请输入昵称">
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="lastname" class="col-sm-3 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+									<div class="col-sm-8">
+										<input type="password" class="form-control" id="lastname" placeholder="请输密码">
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<button type="submit" class="btn btn-default">登录</button>
+								</div>
+							</form>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal -->
+			</div>
+									
+									
+									
+									
+									
+			<!-- 模态框（Modal）注册 -->
+			<div class="modal fade" id="myModal_2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content" id="yc_login">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								&times;
+							</button>
+							<h4 class="modal-title" id="myModalLabel">
+								<label style="align-content: center;">注册</label>
+							</h4>
+						</div>
+						
+						<div class="modal-body" >
+							<form class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="firstname" class="col-sm-3 control-label">昵&nbsp;&nbsp;&nbsp;&nbsp;称</label>
+									<div class="col-sm-7">
+										<input type="text" class="form-control" id="nickname" placeholder="请输入用户名" onblur="checkName()">
+									</div>
+									<span id="tishi" style="float:left;height:38px;line-height:38px">必填</span>
+								</div>
+								
+								<div class="form-group">
+									<label for="lastname" class="col-sm-3 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+									<div class="col-sm-7">
+										<input type="password" class="form-control" id="lastname" placeholder="请输密码">
+									</div>
+									<span id="tishi" style="float:left;height:38px;line-height:38px">必填</span>
+								</div>
+								
+								<div class="form-group">
+									<label for="firstname" class="col-sm-3 control-label">邮&nbsp;&nbsp;&nbsp;&nbsp;箱</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="firstname" placeholder="请输入邮箱">
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="firstname" class="col-sm-3 control-label">职&nbsp;&nbsp;&nbsp;&nbsp;业</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="firstname" placeholder="请输入职业">
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="firstname" class="col-sm-3 control-label">简&nbsp;&nbsp;&nbsp;&nbsp;介</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="firstname" placeholder="请输入简介">
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="inputfile" class="col-sm-3 control-label">头&nbsp;&nbsp;&nbsp;&nbsp;像</label>
+									<div class="col-sm-8">
+										<input type="file" id="file">
+									</div>
+								</div>
+								
+								
+								<div class="form-group">
+									<button type="submit" class="btn btn-default">登录</button>
+								</div>
+							</form>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal -->
+			</div>
+			
+			
+			
+			
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					
+					<div id="yc_header">
+						
+						<nav class="navbar navbar-default" role="navigation">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+								<a class="navbar-brand" href="#">MyBlog</a>
+							</div>
+	
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="nav navbar-nav">
+									<li class="active">
+										<a href="#">首页</a>
+									</li>
+									
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<strong class="caret"></strong></a>
+										<ul class="dropdown-menu">
+											<li>
+												<a href="#">Action</a>
+											</li>
+											<li>
+												<a href="#">Another action</a>
+											</li>
+											<li>
+												<a href="#">Something else here</a>
+											</li>
+											<li class="divider">
+											</li>
+											<li>
+												<a href="#">Separated link</a>
+											</li>
+											<li class="divider">
+											</li>
+											<li>
+												<a href="#">One more separated link</a>
+											</li>
+										</ul>
+									</li>
+									
+									<li>
+										<a href="#">关于我</a>
+									</li>
+									
+								</ul>
+								
+								
+								<form class="navbar-form navbar-left" role="search">
+									<div class="form-group">
+										<input type="text" class="form-control" />
+									</div> <button type="submit" class="btn btn-default">搜索</button>
+								</form>
+								
+								
+								<ul class="nav navbar-nav navbar-right">
+									<li><a data-toggle="modal" data-target="#myModal_1">登录</span></a></li>
+									<li><a data-toggle="modal" data-target="#myModal_2" >注册</a></li>
+								</ul>
+							</div>
+	
+						</nav>
+					</div>
+					<div class="jumbotron">
+						<h1>
+					Hello, world!
+				</h1>
+						<p>
+							This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+						</p>
+						<p>
+							<a class="btn btn-primary btn-large" href="#">Learn more</a>
+						</p>
+					</div>
+					
+					
+					<div class="row clearfix">
+						
+						<div class="col-md-4 column">
+							<h2>
+						Heading
+					</h2>
+							<p>
+								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+							</p>
+							<p>
+								<a class="btn" href="#">View details »</a>
+							</p>
+						</div>
+						
+						
+						<div class="col-md-4 column">
+							<h2>
+						Heading
+					</h2>
+							<p>
+								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+							</p>
+							<p>
+								<a class="btn" href="#">View details »</a>
+							</p>
+						</div>
+						
+						
+						<div class="col-md-4 column">
+							<h2>
+						Heading
+					</h2>
+							<p>
+								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+							</p>
+							<p>
+								<a class="btn" href="#">View details »</a>
+							</p>
+						</div>
+						
+						<div class="col-md-4 column">
+							<h2>
+						Heading
+					</h2>
+							<p>
+								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+							</p>
+							<p>
+								<a class="btn" href="#">View details »</a>
+							</p>
+						</div>
+						
+						
+						<div class="col-md-4 column">
+							<h2>
+						Heading
+					</h2>
+							<p>
+								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+							</p>
+							<p>
+								<a class="btn" href="#">View details »</a>
+							</p>
+						</div>
+						
+						<div class="col-md-4 column">
+							<h2>
+						Heading
+					</h2>
+							<p>
+								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+							</p>
+							<p>
+								<a class="btn" href="#">View details »</a>
+							</p>
+						</div>
+						
+						<div class="col-md-4 column">
+							<h2>
+						Heading
+					</h2>
+							<p>
+								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+							</p>
+							<p>
+								<a class="btn" href="#">View details »</a>
+							</p>
+						</div>
+						
+						<div class="col-md-4 column">
+							<h2>
+						Heading
+					</h2>
+							<p>
+								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+							</p>
+							<p>
+								<a class="btn" href="#">View details »</a>
+							</p>
+						</div>
+						
+						<div class="col-md-4 column">
+							<h2>
+						Heading
+					</h2>
+							<p>
+								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+							</p>
+							<p>
+								<a class="btn" href="#">View details »</a>
+							</p>
+						</div>
+					</div>
+
+
+
+
+
+					<ul class="pagination">
+						<li>
+							<a href="#">Prev</a>
+						</li>
+						<li>
+							<a href="#">1</a>
+						</li>
+						<li>
+							<a href="#">2</a>
+						</li>
+						<li>
+							<a href="#">3</a>
+						</li>
+						<li>
+							<a href="#">4</a>
+						</li>
+						<li>
+							<a href="#">5</a>
+						</li>
+						<li>
+							<a href="#">Next</a>
+						</li>
+					</ul>
+					<div class="row clearfix">
+						<div class="col-md-12 column">
+							xxxxx
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+
+</html>

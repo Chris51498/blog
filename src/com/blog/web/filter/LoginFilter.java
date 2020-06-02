@@ -21,42 +21,42 @@ import javax.servlet.http.HttpSession;
  * @author xj
  *
  */
-@WebFilter(filterName="loginFilter",urlPatterns= {"/back/manager/*"})
-public class LoginFilter implements Filter{
-
-	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {
-		//System.out.println("loginFilter   init...");
-	}
-
-	
-	@Override
-	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
-			throws IOException, ServletException {
-		HttpServletRequest request = (HttpServletRequest) req;
-		HttpServletResponse response = (HttpServletResponse) resp;
-		HttpSession session =  request.getSession();
-//		//AdminInfo admin = (AdminInfo) session.getAttribute("admin");
-//		if (admin==null) {
-//			//根据项目名路径
-//			response.sendRedirect("/fresh/back/backLogin.html");
-//		}else {
-//			chain.doFilter(request, response);
-//		}
-	}
-
-
-	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
-		
-	}
-
+//@WebFilter(filterName="loginFilter",urlPatterns= {"/back/manager/*"})
+//public class LoginFilter implements Filter{
+//
+//	@Override
+//	public void init(FilterConfig filterConfig) throws ServletException {
+//		//System.out.println("loginFilter   init...");
+//	}
+//
+//	
+//	@Override
+//	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
+//			throws IOException, ServletException {
+//		HttpServletRequest request = (HttpServletRequest) req;
+//		HttpServletResponse response = (HttpServletResponse) resp;
+//		HttpSession session =  request.getSession();
+////		//AdminInfo admin = (AdminInfo) session.getAttribute("admin");
+////		if (admin==null) {
+////			//根据项目名路径
+////			response.sendRedirect("/fresh/back/backLogin.html");
+////		}else {
+////			chain.doFilter(request, response);
+////		}
+//	}
+//
+//
 //	@Override
 //	public void destroy() {
 //		// TODO Auto-generated method stub
-//		Filter.super.destroy();
+//		
 //	}
+//
+////	@Override
+////	public void destroy() {
+////		// TODO Auto-generated method stub
+////		Filter.super.destroy();
+////	}
 
-	
-}
+
+//}
