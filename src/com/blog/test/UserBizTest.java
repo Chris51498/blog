@@ -18,7 +18,6 @@ class UserBizTest {
 		User user = new User();
 		user.setNickname("xj");
 		user.setPwd("a");
-		
 		biz.add(user);
 	}
 

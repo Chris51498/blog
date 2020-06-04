@@ -76,6 +76,11 @@ public class User implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	@Override
+	public String toString() {
+		return "User [u_no=" + u_no + ", nickname=" + nickname + ", pwd=" + pwd + ", email=" + email + ", profession="
+				+ profession + ", intro=" + intro + ", u_pic=" + u_pic + ", type=" + type + ", temp=" + temp + "]";
+	}
 	
 	
 	

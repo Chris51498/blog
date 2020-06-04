@@ -17,7 +17,6 @@ public class UserBiz {
 	 * @throws Exception 
 	 */
 	public int add(User t) throws Exception {
-		System.out.println(dao.add(t));
 		return dao.add(t);
 	}
 	
