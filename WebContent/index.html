@@ -15,47 +15,73 @@
 				margin: 0 auto;
 			}
 			
-			#yc_personal{
+			#yc_personal_1{
 				background-color: cadetblue;
-				width: 200px; 
+				width: 210px; 
 				height: 200px;
 				position: fixed;
-				top: 300px;
-				left: 160px;
+				top: 150px;
+				left: 310px;
 			}
+			
 		</style>
 	</head>
 
 	<body>
 	
-			<div id="yc_personal">
-						<ul class="list-group">
-							<a href="#" class="list-group-item active">
-							        <h4 class="list-group-item-heading">
-							            文章分类
-							        </h4>
+		<div id="yc_personal_1">
+			<ul class="list-group">
+				<a href="index.html" class="list-group-item active" style="background:black;text-align:center;height:100px">
+				        <h4 class="list-group-item-heading" style="margin-top:15px">MyBlog</h4>
+				        <h6 style="margin-top:20px">心有猛虎，细嗅蔷薇</h6>
+				</a>
+				
+			    <a href="#" class="list-group-item">
+			    	<span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;首页
+				</a>
+					
+			    <a href="#" class="list-group-item">
+					<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;关于
+				</a>
+				
+				<a href="#" class="list-group-item">
+			        <span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;归档
+			    </a>
+				
+			   
+			    <div id="yc_tags">
+				    <li class="dropdown" style="list-style:none;">
+					    <a href="#" class="list-group-item dropdown-toggle" data-toggle="dropdown">
+							<span class="glyphicon glyphicon-th"></span>&nbsp;&nbsp;&nbsp;&nbsp;分类
+						</a>
+				            <span class="caret"></span></a>
+				        <ul class="dropdown-menu" style="width:210px;height:120px">
+				            <li>
+				                <a href="#" class="list-group-item" style="height:38px;line-height:34px;margin-top:-3px">
+							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;分类2
 							    </a>
-						    <a href="#" class="list-group-item">
-								<span class="glyphicon glyphicon-star"></span>标签1</a>
-						    <a href="#" class="list-group-item">
-								<span class="glyphicon glyphicon-star"></span>标签2</a>
-						    <a href="#" class="list-group-item">
-								<span class="glyphicon glyphicon-star"></span>标签3</a>
-						    <a href="#" class="list-group-item">
-						        <span class="glyphicon glyphicon-star"></span>标签4
-						    </a>
-						    <a href="#" class="list-group-item">
-								<span class="glyphicon glyphicon-star"></span>标签5</a>
-						    <a href="#" class="list-group-item">
-						       <span class="glyphicon glyphicon-star"></span>
-						        标签6
-						    </a>
-						</ul>
-						
-						
-					</div>
+							</li>
+							
+				            <li>
+				                <a href="#" class="list-group-item" style="height:38px;line-height:34px">
+							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;分类2
+							    </a>
+							</li>
+							
+				            <li>
+				                <a href="#" class="list-group-item" style="height:38px;line-height:34px">
+							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;分类2
+							    </a>
+							</li>
+				        </ul>
+				    </li>
+			    </div>   
+			    
+			    
+			</ul>
+		</div>
 	
-		<div class="container" style="width: 50%;">
+		<div class="container" style="width: 45%; height:500px%">
 		
 		
 			<div id="yc_login">
