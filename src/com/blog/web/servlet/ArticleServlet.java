@@ -24,6 +24,25 @@ public class ArticleServlet extends BaseServlet {
 			doFind(request, response);
 		} else if("findByID".equals(op)){
 			doFindByID(request, response);
+		}else if("findAll".equals(op)){
+			doFindAll(request, response);
+		}
+	}
+
+	
+	/**
+	 * 查看所有文章
+	 * @param request
+	 * @param response
+	 */
+	private void doFindAll(HttpServletRequest request, HttpServletResponse response) {
+		
+		try {
+			List<Article> list = biz.findAll();
+			toPrintJson(response, list);
+		} catch (Exception e) {
+			LogUtil.log.error(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 
@@ -40,7 +59,8 @@ public class ArticleServlet extends BaseServlet {
 			System.out.println(article);
 			toPrintJson(response, article);
 		} catch (Exception e) {
-			// TODO: handle exception
+			LogUtil.log.error(e.getMessage());
+			e.printStackTrace();
 		}
 		
 	}

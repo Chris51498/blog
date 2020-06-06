@@ -168,89 +168,23 @@
 		</div>
 		
 		
-		<!-- about -->
-		<div class="container" style="width: 30%;">
+		<!-- list -->
+		<div class="container" style="width: 30%;" id="yc_list_filelist">
 			<div style="width:100%;border: 1px solid #ddd;">
-				<h4 style="width:100%;text-align:center;margin-top:20px;margin-bottom:20px;color:#555">目前共计12篇文章，继续努力</h4>
+				<h4 style="width:100%;text-align:center;margin-top:20px;margin-bottom:20px;color:#555">目前共计{{total}}篇文章，继续努力</h4>
 				<hr style="height:1px;border:none;border-top:1px solid #ddd;" />
 				
-				<div id="yc_list_filelist">
-				
-					<div class="panel panel-default" style="height:60px;padding-left:25px">
+					<div class="panel panel-default" style="height:60px;padding-left:25px" v-for="article in articles">
 					    <div class="panel-body">
-					   		<span>2020-06-01</span>
-					        <span>这是一个基本的面板</span>
+					    	<a :href="'article.html#'+article.a_no" style="color:#999">
+						   		<span>{{article.a_time}}</span>
+						        <span>{{article.title}}</span>
+					        </a>
 					    </div>
 					</div>
 					
-					<div class="panel panel-default" style="height:60px;padding-left:25px">
-					    <div class="panel-body">
-					   		<span>2020-06-01</span>
-					        <span>这是一个基本的面板</span>
-					    </div>
-					</div>
-					
-					<div class="panel panel-default" style="height:60px;padding-left:25px">
-					    <div class="panel-body">
-					   		<span>2020-06-01</span>
-					        <span>这是一个基本的面板</span>
-					    </div>
-					</div>
-					
-					<div class="panel panel-default" style="height:60px;padding-left:25px">
-					    <div class="panel-body">
-					   		<span>2020-06-01</span>
-					        <span>这是一个基本的面板</span>
-					    </div>
-					</div>
-					
-					<div class="panel panel-default" style="height:60px;padding-left:25px">
-					    <div class="panel-body">
-					   		<span>2020-06-01</span>
-					        <span>这是一个基本的面板</span>
-					    </div>
-					</div>
-					
-					<div class="panel panel-default" style="height:60px;padding-left:25px">
-					    <div class="panel-body">
-					   		<span>2020-06-01</span>
-					        <span>这是一个基本的面板</span>
-					    </div>
-					</div>
-					
-					<div class="panel panel-default" style="height:60px;padding-left:25px">
-					    <div class="panel-body">
-					   		<span>2020-06-01</span>
-					        <span>这是一个基本的面板</span>
-					    </div>
-					</div>
-					
-					<div class="panel panel-default" style="height:60px;padding-left:25px">
-					    <div class="panel-body">
-					   		<span>2020-06-01</span>
-					        <span>这是一个基本的面板</span>
-					    </div>
-					</div>
-					
-					<div class="panel panel-default" style="height:60px;padding-left:25px">
-					    <div class="panel-body">
-					   		<span>2020-06-01</span>
-					        <span>这是一个基本的面板</span>
-					    </div>
-					</div>
-					
-					<div class="panel panel-default" style="height:60px;padding-left:25px">
-					    <div class="panel-body">
-					   		<span>2020-06-01</span>
-					        <span>这是一个基本的面板</span>
-					    </div>
-					</div>
-					
-					
-					
-					
-				</div>
 			</div>
+		</div>
 			
 					
 			<!-- 底部 -->
@@ -262,4 +196,33 @@
 			</div>
 		</div>
 	</body>
+	
+	<script src="js/jquery.min.js"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/axios.js"></script>
+	<script src="js/qs.js"></script>
+	
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#yc_list_filelist",
+			data:{
+				total:0,
+				articles:{}
+			},
+			
+			methods:{
+				
+			},
+			
+			mounted:function(){
+				axios.post("article.action",qs.stringify({op:'findAll'}))
+					.then(result=>{
+						this.articles=result.data;
+						this.total=result.data.length;
+					});
+			}
+		});
+	</script>
+	
+	
 </html>

@@ -32,5 +32,15 @@ public class ArticleBiz {
 		Article article=dao.findByID(t);
 		return article;
 	}
+	
+	
+	/**
+	 * 查看所有文章
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Article> findAll() throws Exception{
+		return dao.findAll();
+	}
 
 }

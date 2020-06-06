@@ -1,5 +1,7 @@
 package com.blog.dao;
 
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +58,15 @@ public class ArticleDAO implements BaseDAO<Article>{
 	}
 
 
-
+	/**
+	 * 查询所有文章
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Article> findAll() throws Exception{
+		String sql = "select a_no,u_no,t_no,a_time,title,a_num,a_content,a_pic,temp from article order by a_time desc";
+		return db.findMutipl(sql, null, Article.class);
+	}
 	
 
 }
