@@ -16,12 +16,38 @@
 			}
 			
 			#yc_personal_1{
-				background-color: cadetblue;
 				width: 210px; 
-				height: 200px;
+				height: 250px;
 				position: fixed;
 				top: 150px;
 				left: 310px;
+			}
+			
+			
+			#yc_page a{
+				border-radius:50%;
+				margin-left:15px;
+				color:#999;
+			}
+			
+			
+			
+			
+			.list-group-horizontal .list-group-item {
+				display: inline-block;
+			}
+			.list-group-horizontal .list-group-item {
+				margin-bottom: 0;
+				margin-left:-4px;
+				margin-right: 0;
+			}
+			.list-group-horizontal .list-group-item:first-child {
+				border-top-right-radius:0;
+				border-bottom-left-radius:4px;
+			}
+			.list-group-horizontal .list-group-item:last-child {
+				border-top-right-radius:4px;
+				border-bottom-left-radius:0;
 			}
 			
 		</style>
@@ -29,48 +55,58 @@
 
 	<body>
 	
+		<!-- 左侧第一个框 -->
 		<div id="yc_personal_1">
+		
+			<!-- 导航 -->
 			<ul class="list-group">
 				<a href="index.html" class="list-group-item active" style="background:black;text-align:center;height:100px">
 				        <h4 class="list-group-item-heading" style="margin-top:15px">MyBlog</h4>
 				        <h6 style="margin-top:20px">心有猛虎，细嗅蔷薇</h6>
 				</a>
 				
-			    <a href="#" class="list-group-item">
-			    	<span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;首页
+			    <a href="index.html" class="list-group-item">
+			    	<span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;home
 				</a>
 					
-			    <a href="#" class="list-group-item">
-					<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;关于
+			    <a href="about.html" class="list-group-item">
+					<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;about
 				</a>
 				
-				<a href="#" class="list-group-item">
-			        <span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;归档
+				<a href="list.html" class="list-group-item">
+			        <span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;file
 			    </a>
 				
-			   
+			   <!-- 分类下拉列表 -->
 			    <div id="yc_tags">
 				    <li class="dropdown" style="list-style:none;">
 					    <a href="#" class="list-group-item dropdown-toggle" data-toggle="dropdown">
-							<span class="glyphicon glyphicon-th"></span>&nbsp;&nbsp;&nbsp;&nbsp;分类
+							<span class="glyphicon glyphicon-th"></span>&nbsp;&nbsp;&nbsp;&nbsp;tags
 						</a>
-				            <span class="caret"></span></a>
+						<a><span class="caret"></span></a>
+						
 				        <ul class="dropdown-menu" style="width:210px;height:120px">
 				            <li>
 				                <a href="#" class="list-group-item" style="height:38px;line-height:34px;margin-top:-3px">
-							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;分类2
+							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;Java
 							    </a>
 							</li>
 							
 				            <li>
 				                <a href="#" class="list-group-item" style="height:38px;line-height:34px">
-							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;分类2
+							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;数据库
 							    </a>
 							</li>
 							
 				            <li>
 				                <a href="#" class="list-group-item" style="height:38px;line-height:34px">
-							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;分类2
+							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;前端
+							    </a>
+							</li>
+							
+							<li>
+				                <a href="#" class="list-group-item" style="height:38px;line-height:34px">
+							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;生活
 							    </a>
 							</li>
 				        </ul>
@@ -78,11 +114,74 @@
 			    </div>   
 			    
 			    
+			    <!-- 左侧第二个框 -->
+			    <div id="yc_personal_2" style="width:210px;height:300px;border: 1px solid #ddd;">
+			    
+			    <!-- 用户信息（头像，文章各类统计） -->
+			    	<div id="yc_author" style="width:208px;height:220px;background-color:#fff;">
+			    		<img src="imgs/me.jpg" class="img-circle img-responsive" style="width:110px;margin:0 auto;padding-top:10px;">
+			    		<p style="width:210px;text-align:center;padding-top:5px;font-size:15px;font-weight: bold">MyBlog</p>
+			    		<p style="width:210px;text-align:center;font-size:8px;color:#999">全栈工程师</p>
+			    		
+			    		<!-- 分类统计 -->
+			    		<div class="row" style="width:210px;margin-left:0px">
+		
+				            <div class="list-group list-group-horizontal" style="margin-bottom:0px">
+				            	<div class="list-group-item" style="padding:0 0 0 1px;width:50px;margin-left:0px;border:0">
+				            		<p style="height:10px;text-align:center;font-weight: bold">5</p>
+				            		<p style="height:10px;text-align:center"><a href="#" style="font-size:13px;color:#999">Java</a></p>
+				            	</div>
+				            	
+				            	
+				            	<div class="list-group-item" style="padding:0 0 0 0;width:50px;margin-left:-1px;border:0">
+				            		<p style="height:10px;text-align:center;font-weight: bold">5</p>
+				            		<p style="height:10px;text-align:center"><a href="#" style="font-size:13px;color:#999">数据库</a></p>
+				            	</div>
+				            	
+				            	
+				            	<div class="list-group-item" style="padding:0 0 0 0;width:50px;margin-left:-1px;border:0">
+				            		<p style="height:10px;text-align:center;font-weight: bold">5</p>
+				            		<p style="height:10px;text-align:center"><a href="#" style="font-size:13px;color:#999">前端</a></p>
+				            	</div>
+				            	
+				            	
+				            	<div class="list-group-item" style="padding:0 0 0 0;width:49px;margin-left:-1px;border:0">
+				            		<p style="height:10px;text-align:center;font-weight: bold">5</p>
+				            		<p style="height:10px;text-align:center"><a href="#" style="font-size:13px;color:#999">生活</a></p>
+				            	</div>
+				               
+				            </div>
+				
+						</div>	
+			    		
+			    	</div>
+			    	
+			    	<hr style="margin:15px 0 0 0">
+			    	
+			    	
+			    	<!-- 左侧底部链接栏 -->
+			    	<div id="yc_link">
+			    		<p style="width:208px;text-align:center;font-weight: bold;margin-top:8px;margin-bottom:5px">links</p>
+			    		
+			    		<!-- github链接 -->
+			    		<div id="yc_github" style="">
+				    		<span><img src="imgs/github.jpg" style="width:20px;height:20px;padding-bottom:3px;margin-left:25px"/></span>
+				    		<a href="https://github.com/Chris51498/blog" target="_blank" style="display:inline-block;width:45px;height:20px;line-height:20px;color:#999">GitHub</a>
+				    		
+				    		<span><img src="imgs/email.jpg" style="width:16px;height:18px;padding-bottom:3px;margin-left:18px"/></span>
+				    		<a href="javascript:email()" style="display:inline-block;width:45px;height:20px;line-height:20px;color:#999">Email</a>
+				    		
+			    		</div>
+			    	</div>
+			    	
+			    </div>
+			    
 			</ul>
 		</div>
-	
-		<div class="container" style="width: 45%; height:500px%">
 		
+		
+	
+		<div class="container" style="width: 45%;">
 		
 			<div id="yc_login">
 				<!-- 模态框（Modal） 登录-->
@@ -197,47 +296,55 @@
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 					
-					<div id="yc_header">
+					
+					<!-- 头部导航 -->
+					<div id="yc_header" style="background-color: black;">
 						
 						<nav class="navbar navbar-default" role="navigation">
-							<div class="navbar-header">
+							<div class="navbar-header" style="background-color: black;">
 								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-								<a class="navbar-brand" href="#">MyBlog</a>
+								<a class="navbar-brand" href="index.html" style="font-size:20px;font-weight: bold;color:#fff;">MyBlog</a>
 							</div>
 	
-							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: black;">
 								<ul class="nav navbar-nav">
-									<li class="active">
-										<a href="#">首页</a>
+									<li>
+										<a href="index.html" style="color:#fff;">首页</a>
 									</li>
 									
 									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<strong class="caret"></strong></a>
-										<ul class="dropdown-menu">
-											<li>
-												<a href="#">Action</a>
-											</li>
-											<li>
-												<a href="#">Another action</a>
-											</li>
-											<li>
-												<a href="#">Something else here</a>
-											</li>
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;">分类<strong class="caret" ></strong></a>
+										<ul class="dropdown-menu" >
+											
 											<li class="divider">
 											</li>
 											<li>
-												<a href="#">Separated link</a>
+												<a href="#">Java</a>
 											</li>
+											
+											
 											<li class="divider">
 											</li>
 											<li>
-												<a href="#">One more separated link</a>
+												<a href="#">数据库</a>
+											</li>
+											
+											<li class="divider">
+											</li>
+											<li>
+												<a href="#">前端</a>
+											</li>
+											
+											<li class="divider">
+											</li>
+											<li>
+												<a href="#">生活</a>
 											</li>
 										</ul>
 									</li>
 									
 									<li>
-										<a href="#">关于我</a>
+										<a href="about.html" style="color:white">关于我</a>
 									</li>
 									
 								</ul>
@@ -246,175 +353,85 @@
 								<form class="navbar-form navbar-left" role="search">
 									<div class="form-group">
 										<input type="text" class="form-control" />
-									</div> <button type="submit" class="btn btn-default">搜索</button>
+									</div> <button type="submit" class="btn btn-default" >搜索</button>
 								</form>
 								
 								
 								<ul class="nav navbar-nav navbar-right">
-									<li><a data-toggle="modal" data-target="#myModal_1">登录</span></a></li>
-									<li><a data-toggle="modal" data-target="#myModal_2" >注册</a></li>
+									<li><a data-toggle="modal" data-target="#myModal_1" style="color:white">登录</span></a></li>
+									<li><a data-toggle="modal" data-target="#myModal_2" style="color:white">注册</a></li>
 								</ul>
 							</div>
 	
 						</nav>
 					</div>
 					
-					<div class="jumbotron">
-						<h1>Hello, world!</h1>
-						<p>
-							This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
-						</p>
-						<p>
-							<a class="btn btn-primary btn-large" href="#">Learn more</a>
-						</p>
+					
+					
+					<!--图片轮播-->
+					<div >
+						<div class="carousel slide" id="slidershow" data-ride="carousel" data-interval="2000">
+							<!--计数器-->
+							<ol class="carousel-indicators">
+								<li class="active" data-target="#slidershow" data-slide-to="0"></li>
+								<li data-target="#slidershow" data-slide-to="1"></li>
+								<li data-target="#slidershow" data-slide-to="2"></li>
+							</ol>
+							<!--图片容器-->
+							<div class="carousel-inner">
+								<div class="item active">
+									<img src="imgs/1.png"/>
+								</div>
+								<div class="item">
+									<img src="imgs/2.png"/>
+								</div>
+								<div class="item">
+									<img src="imgs/3.png"/>
+								</div>
+								
+							</div>
+						</div>
 					</div>
 					
 					
-					<div class="row clearfix">
-						
-						<div class="col-md-4 column">
-							<h2>
-						Heading
-					</h2>
-							<p>
-								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-							</p>
-							<p>
-								<a class="btn" href="#">View details »</a>
-							</p>
-						</div>
-						
-						
-						<div class="col-md-4 column">
-							<h2>
-						Heading
-					</h2>
-							<p>
-								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-							</p>
-							<p>
-								<a class="btn" href="#">View details »</a>
-							</p>
-						</div>
-						
-						
-						<div class="col-md-4 column">
-							<h2>
-						Heading
-					</h2>
-							<p>
-								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-							</p>
-							<p>
-								<a class="btn" href="#">View details »</a>
-							</p>
-						</div>
-						
-						<div class="col-md-4 column">
-							<h2>
-						Heading
-					</h2>
-							<p>
-								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-							</p>
-							<p>
-								<a class="btn" href="#">View details »</a>
-							</p>
-						</div>
-						
-						
-						<div class="col-md-4 column">
-							<h2>
-						Heading
-					</h2>
-							<p>
-								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-							</p>
-							<p>
-								<a class="btn" href="#">View details »</a>
-							</p>
-						</div>
-						
-						<div class="col-md-4 column">
-							<h2>
-						Heading
-					</h2>
-							<p>
-								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-							</p>
-							<p>
-								<a class="btn" href="#">View details »</a>
-							</p>
-						</div>
-						
-						<div class="col-md-4 column">
-							<h2>
-						Heading
-					</h2>
-							<p>
-								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-							</p>
-							<p>
-								<a class="btn" href="#">View details »</a>
-							</p>
-						</div>
-						
-						<div class="col-md-4 column">
-							<h2>
-						Heading
-					</h2>
-							<p>
-								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-							</p>
-							<p>
-								<a class="btn" href="#">View details »</a>
-							</p>
-						</div>
-						
-						<div class="col-md-4 column">
-							<h2>
-						Heading
-					</h2>
-							<p>
-								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-							</p>
-							<p>
-								<a class="btn" href="#">View details »</a>
-							</p>
-						</div>
+					
+					<!-- 显示文章简介 -->
+				<div class="row clearfix"  id="blog_article">
+
+					<div class="col-md-6 column" v-for="article in articles">
+						<h2>{{article.title}}</h2>
+						<p>{{article.a_content}}</p>
+						<p>
+							<a class="btn" :href="'article.html#'+article.a_no">获取更好的阅读体验 »</a>
+						</p>
 					</div>
 
 
+					
+				</div>
 
 
 
-					<ul class="pagination">
-						<li>
-							<a href="#">Prev</a>
-						</li>
-						<li>
-							<a href="#">1</a>
-						</li>
-						<li>
-							<a href="#">2</a>
-						</li>
-						<li>
-							<a href="#">3</a>
-						</li>
-						<li>
-							<a href="#">4</a>
-						</li>
-						<li>
-							<a href="#">5</a>
-						</li>
-						<li>
-							<a href="#">Next</a>
-						</li>
-					</ul>
-					<div class="row clearfix">
-						<div class="col-md-12 column">
-							xxxxx
-						</div>
+
+					<!-- 分页 -->
+					<div id="yc_page" style="text-align:center;">
+						<ul class="pagination pagination-sm">
+							<li><a href="#">&laquo;</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">&raquo;</a></li>
+						</ul>
+					</div>
+					
+					<!-- 底部 -->
+					<div id="yc_footer" class="col-md-12 column" style="text-align:center;margin-bottom:30px">
+						&copy;
+						<span>2020</span>
+						<span><img src="imgs/user.jpg" style="width:17px;height:17px;padding-bottom:1px;margin-left:5px;margin-right:5px"/></span>
+						<span>MyBlog</span>
 					</div>
 				</div>
 			</div>
@@ -428,6 +445,13 @@
 	<script src="js/ajaxfileupload.js"></script>
 
 	<script type="text/javascript">
+		//邮箱
+		function email(){
+			alert("xujian_xj@qq.com");
+		}
+		
+	
+	
 		var yc_login = new Vue({
 			el:'#yc_login',
 			data:{
@@ -522,6 +546,33 @@
 				return false;
 			}
 		}
+		
+		
+		//首页文章显示vue
+		var vm=new Vue({
+		el:'#blog_article',
+		data:{
+			articles:{},
+		},
+		methods:{
+			
+			
+		},
+		mounted:function(){
+			//页面加载完成之后
+			axios({
+				url:'article.action',
+				method:'post',
+				params:{op:'find'}
+			}).then(result=>{
+				if(result.data!=null){
+					this.articles=result.data.articles;
+				}else{
+					alert("加载失败");
+				}
+			});
+		}
+	});
 		
 		
 	</script>

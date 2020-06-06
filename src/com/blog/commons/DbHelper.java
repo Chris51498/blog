@@ -187,7 +187,7 @@ public class DbHelper {
 		int count =data.getColumnCount();
 		//获取所有列名 
 		for(int i =1;i<=count;i++){
-			String columnName =data.getColumnName(i);
+			String columnName =data.getColumnLabel(i);//这个可以获取 别名
 			 //添加daolist集合
 			list.add(columnName);
 		}

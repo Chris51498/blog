@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="utf-8" />
+		<title>filelist</title>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<style type="text/css">
+			
+			#yc_personal_1{
+				width: 210px; 
+				height: 250px;
+				position: fixed;
+				top: 150px;
+				left: 460px;
+			}
+			
+			
+			
+			
+			
+			.list-group-horizontal .list-group-item {
+				display: inline-block;
+			}
+			.list-group-horizontal .list-group-item {
+				margin-bottom: 0;
+				margin-left:-4px;
+				margin-right: 0;
+			}
+			.list-group-horizontal .list-group-item:first-child {
+				border-top-right-radius:0;
+				border-bottom-left-radius:4px;
+			}
+			.list-group-horizontal .list-group-item:last-child {
+				border-top-right-radius:4px;
+				border-bottom-left-radius:0;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+	
+		<!-- 左侧第一个框 -->
+		<div id="yc_personal_1">
+		
+			<!-- 导航 -->
+			<ul class="list-group">
+				<a href="index.html" class="list-group-item active" style="background:black;text-align:center;height:100px">
+				        <h4 class="list-group-item-heading" style="margin-top:15px">MyBlog</h4>
+				        <h6 style="margin-top:20px">心有猛虎，细嗅蔷薇</h6>
+				</a>
+				
+			    <a href="index.html" class="list-group-item">
+			    	<span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;home
+				</a>
+					
+			    <a href="about.html" class="list-group-item">
+					<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;about
+				</a>
+				
+				<a href="list.html" class="list-group-item">
+			        <span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;file
+			    </a>
+				
+			   <!-- 分类下拉列表 -->
+			    <div id="yc_tags">
+				    <li class="dropdown" style="list-style:none;">
+					    <a href="#" class="list-group-item dropdown-toggle" data-toggle="dropdown">
+							<span class="glyphicon glyphicon-th"></span>&nbsp;&nbsp;&nbsp;&nbsp;tags
+						</a>
+						<a><span class="caret"></span></a>
+						
+				        <ul class="dropdown-menu" style="width:210px;height:120px">
+				            <li>
+				                <a href="#" class="list-group-item" style="height:38px;line-height:34px;margin-top:-3px">
+							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;Java
+							    </a>
+							</li>
+							
+				            <li>
+				                <a href="#" class="list-group-item" style="height:38px;line-height:34px">
+							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;数据库
+							    </a>
+							</li>
+							
+				            <li>
+				                <a href="#" class="list-group-item" style="height:38px;line-height:34px">
+							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;前端
+							    </a>
+							</li>
+							
+							<li>
+				                <a href="#" class="list-group-item" style="height:38px;line-height:34px">
+							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;生活
+							    </a>
+							</li>
+				        </ul>
+				    </li>
+			    </div>   
+			    
+			    
+			    <!-- 左侧第二个框 -->
+			    <div id="yc_personal_2" style="width:210px;height:300px;border: 1px solid #ddd;">
+			    
+			    <!-- 用户信息（头像，文章各类统计） -->
+			    	<div id="yc_author" style="width:208px;height:220px;background-color:#fff;">
+			    		<img src="imgs/me.jpg" class="img-circle img-responsive" style="width:110px;margin:0 auto;padding-top:10px;">
+			    		<p style="width:210px;text-align:center;padding-top:5px;font-size:15px;font-weight: bold">MyBlog</p>
+			    		<p style="width:210px;text-align:center;font-size:8px;color:#999">全栈工程师</p>
+			    		
+			    		<!-- 分类统计 -->
+			    		<div class="row" style="width:210px;margin-left:0px">
+		
+				            <div class="list-group list-group-horizontal" style="margin-bottom:0px">
+				            	<div class="list-group-item" style="padding:0 0 0 1px;width:50px;margin-left:0px;border:0">
+				            		<p style="height:10px;text-align:center;font-weight: bold">5</p>
+				            		<p style="height:10px;text-align:center"><a href="#" style="font-size:13px;color:#999">Java</a></p>
+				            	</div>
+				            	
+				            	
+				            	<div class="list-group-item" style="padding:0 0 0 0;width:50px;margin-left:-1px;border:0">
+				            		<p style="height:10px;text-align:center;font-weight: bold">5</p>
+				            		<p style="height:10px;text-align:center"><a href="#" style="font-size:13px;color:#999">数据库</a></p>
+				            	</div>
+				            	
+				            	
+				            	<div class="list-group-item" style="padding:0 0 0 0;width:50px;margin-left:-1px;border:0">
+				            		<p style="height:10px;text-align:center;font-weight: bold">5</p>
+				            		<p style="height:10px;text-align:center"><a href="#" style="font-size:13px;color:#999">前端</a></p>
+				            	</div>
+				            	
+				            	
+				            	<div class="list-group-item" style="padding:0 0 0 0;width:49px;margin-left:-1px;border:0">
+				            		<p style="height:10px;text-align:center;font-weight: bold">5</p>
+				            		<p style="height:10px;text-align:center"><a href="#" style="font-size:13px;color:#999">生活</a></p>
+				            	</div>
+				               
+				            </div>
+				
+						</div>		
+			    		
+			    	</div>
+			    	
+			    	<hr style="margin:15px 0 0 0">
+			    	
+			    	
+			    	<!-- 左侧底部链接栏 -->
+			    	<div id="yc_link">
+			    		<p style="width:208px;text-align:center;font-weight: bold;margin-top:8px;margin-bottom:5px">links</p>
+			    		
+			    		<!-- github链接 -->
+			    		<div id="yc_github" style="">
+				    		<span><img src="imgs/github.jpg" style="width:20px;height:20px;padding-bottom:3px;margin-left:25px"/></span>
+				    		<a href="https://github.com/Chris51498/blog" target="_blank" style="display:inline-block;width:45px;height:20px;line-height:20px;color:#999">GitHub</a>
+				    		
+				    		<span><img src="imgs/email.jpg" style="width:16px;height:18px;padding-bottom:3px;margin-left:18px"/></span>
+				    		<a href="javascript:email()" style="display:inline-block;width:45px;height:20px;line-height:20px;color:#999">Email</a>
+				    		
+			    		</div>
+			    	</div>
+			    	
+			    </div>
+			    
+			</ul>
+		</div>
+		
+		
+		<!-- about -->
+		<div class="container" style="width: 30%;">
+			<div style="width:100%;border: 1px solid #ddd;">
+				<h4 style="width:100%;text-align:center;margin-top:20px;margin-bottom:20px;color:#555">目前共计12篇文章，继续努力</h4>
+				<hr style="height:1px;border:none;border-top:1px solid #ddd;" />
+				
+				<div id="yc_list_filelist">
+				
+					<div class="panel panel-default" style="height:60px;padding-left:25px">
+					    <div class="panel-body">
+					   		<span>2020-06-01</span>
+					        <span>这是一个基本的面板</span>
+					    </div>
+					</div>
+					
+					<div class="panel panel-default" style="height:60px;padding-left:25px">
+					    <div class="panel-body">
+					   		<span>2020-06-01</span>
+					        <span>这是一个基本的面板</span>
+					    </div>
+					</div>
+					
+					<div class="panel panel-default" style="height:60px;padding-left:25px">
+					    <div class="panel-body">
+					   		<span>2020-06-01</span>
+					        <span>这是一个基本的面板</span>
+					    </div>
+					</div>
+					
+					<div class="panel panel-default" style="height:60px;padding-left:25px">
+					    <div class="panel-body">
+					   		<span>2020-06-01</span>
+					        <span>这是一个基本的面板</span>
+					    </div>
+					</div>
+					
+					<div class="panel panel-default" style="height:60px;padding-left:25px">
+					    <div class="panel-body">
+					   		<span>2020-06-01</span>
+					        <span>这是一个基本的面板</span>
+					    </div>
+					</div>
+					
+					<div class="panel panel-default" style="height:60px;padding-left:25px">
+					    <div class="panel-body">
+					   		<span>2020-06-01</span>
+					        <span>这是一个基本的面板</span>
+					    </div>
+					</div>
+					
+					<div class="panel panel-default" style="height:60px;padding-left:25px">
+					    <div class="panel-body">
+					   		<span>2020-06-01</span>
+					        <span>这是一个基本的面板</span>
+					    </div>
+					</div>
+					
+					<div class="panel panel-default" style="height:60px;padding-left:25px">
+					    <div class="panel-body">
+					   		<span>2020-06-01</span>
+					        <span>这是一个基本的面板</span>
+					    </div>
+					</div>
+					
+					<div class="panel panel-default" style="height:60px;padding-left:25px">
+					    <div class="panel-body">
+					   		<span>2020-06-01</span>
+					        <span>这是一个基本的面板</span>
+					    </div>
+					</div>
+					
+					<div class="panel panel-default" style="height:60px;padding-left:25px">
+					    <div class="panel-body">
+					   		<span>2020-06-01</span>
+					        <span>这是一个基本的面板</span>
+					    </div>
+					</div>
+					
+					
+					
+					
+				</div>
+			</div>
+			
+					
+			<!-- 底部 -->
+			<div id="yc_footer" class="col-md-12 column" style="text-align:center;margin-bottom:30px;margin-top:30px">
+				&copy;
+				<span>2020</span>
+				<span><img src="imgs/user.jpg" style="width:17px;height:17px;padding-bottom:1px;margin-left:5px;margin-right:5px"/></span>
+				<span>MyBlog</span>
+			</div>
+		</div>
+	</body>
+</html>

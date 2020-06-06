@@ -76,6 +76,11 @@ public class Article implements Serializable{
 	public void setTemp(String temp) {
 		this.temp = temp;
 	}
+	@Override
+	public String toString() {
+		return "Article [a_no=" + a_no + ", u_no=" + u_no + ", t_no=" + t_no + ", a_time=" + a_time + ", title=" + title
+				+ ", a_num=" + a_num + ", a_content=" + a_content + ", a_pic=" + a_pic + ", temp=" + temp + "]";
+	}
 	
 	
 	

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="editor/css/editormd.preview.css" />
+
+<style>
+#test {
+	width: 1000px;
+	margin: 0 auto;
+}
+</style>
+</head>
+<body>
+	<div id="test">
+		<textarea style="display: none;" id="text"></textarea>
+	</div>
+
+
+
+
+
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="editor/lib/marked.min.js"></script>
+	<script src="editor/lib/prettify.min.js"></script>
+	<script src="editor/lib/raphael.min.js"></script>
+	<script src="editor/lib/underscore.min.js"></script>
+	<script src="editor/lib/sequence-diagram.min.js"></script>
+	<script src="editor/lib/flowchart.min.js"></script>
+	<script src="editor/lib/jquery.flowchart.min.js"></script>
+	<script src="editor/editormd.js"></script>
+	<script type="text/javascript">
+	
+	var hash=window.location.hash;
+	var articleid=hash.replace("#",'');
+	
+		
+		
+		LoadArt();
+		//加载文章
+		function LoadArt(){
+			var articleid=this.articleid;
+			
+			
+			//发送请求,获取文章内容
+			$.get('article.action?op=findByID',{a_no:articleid},function(data){
+				if(data!=null){
+					alert(data.a_content);
+					 $("#test").html('<textarea id="text" style="display:none;"></textarea>');
+			            var content=data.a_content;//获取需要转换的内容
+			            $("#text").html(content);//将需要转换的内容加到转换后展示容器的textarea隐藏标签中
+			            
+			            editormd.markdownToHTML("test", {
+			    			htmlDecode : "style,script,iframe",
+			    			emoji : true,
+			    			taskList : true,
+			    			tex : true, // 默认不解析
+			    			flowChart : true, // 默认不解析
+			    			sequenceDiagram : true
+			    		// 默认不解析
+			    		});
+
+				}else{
+					alert("加载文章失败");
+				}
+			},'json');
+		}
+		
+		
+		
+		
+		$(function(){
+			alert(123);
+		
+		});
+		
+		
+		
+		
+	</script>
+	
+
+
+</body>
+</html>
