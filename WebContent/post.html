@@ -53,7 +53,7 @@
 							<div class="form-group">
 								<label for="firstname" class="col-sm-3 control-label">标&nbsp;&nbsp;&nbsp;&nbsp;题</label>
 								<div class="col-sm-6">
-									<input type="text" class="form-control" id="nickname2"
+									<input type="text" class="form-control" id="title"
 										placeholder="标题是文章的灵魂">
 								</div>
 								<span id="tishi"
@@ -63,7 +63,7 @@
 							<div class="form-group">
 								<label for="lastname" class="col-sm-3 control-label">标&nbsp;&nbsp;&nbsp;&nbsp;签</label>
 								<div class="col-sm-6">
-									<input type="password" class="form-control" id="pwd2"
+									<input type="text" class="form-control" id="tag"
 										placeholder="方便读者快速定位这篇文章">
 								</div>
 								<span id="tishiPwd"
@@ -96,13 +96,14 @@
                         </ul>
                     </div><!-- /btn-group -->
                     <input type="text" class="form-control" id="proname" style="width:195px">
+                    <span id="tishiPwd"
+									style="float: left; height: 38px; line-height: 38px;margin-left:15px">必填</span>
                 </div><!-- /input-group -->
             
 
 							</br>
 							<div class="form-group">
-								<input class="btn btn-primary" type="button" onclick="add()"
-									value="发布" data-dissmiss="modal">
+								<input class="btn btn-primary" type="button" value="发布" data-dissmiss="modal" onclick="post()">
 							</div>
 						</form>
 					</div>
@@ -135,6 +136,42 @@
 		$("#project li a").on("click", function() {
 			$("#proname").val($(this).text());
 		});
+		
+		function post(){
+			var title=$("#title").val();
+			var tag=$("#tag").val();
+			var type=$("#proname").val();
+			var content=$("#text").val();
+			if(title==''||tag==''||type==''){
+				alert("必填项不能为空！！");
+				return false;
+			}
+			if(type.indexOf("Java")>=0){
+				type="1";
+			}else if(type.indexOf("数据库")>=0){
+				type="2";
+			}else if(type.indexOf("前端")>=0){
+				type="3";
+			}else{
+				type="4";
+			}
+			
+			$.post('article.action',{op:'addArt',t_no:type,a_content:content,title:title,temp:tag},function(data){
+				if(data!=0 || data != ""){
+					alert("发布文章成功");
+					window.location.href="index.html";
+				}else{
+					alert("请重试....");
+				}
+			},'json');
+			
+			
+			
+		}
+		
+		
+		
+		
 	</script>
 
 </body>

@@ -28,10 +28,28 @@ public class ArticleServlet extends BaseServlet {
 			doFindAll(request, response);
 		}else if("findByType".equals(op)){
 			doFindByType(request, response);
+		}else if("addArt".equals(op)) {
+			doAddArt(request, response);
 		}
 	}
 
-	
+	/**
+	 * 添加文章
+	 * @param request
+	 * @param response
+	 */
+	private void doAddArt(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			Article t=parseRequest(request, Article.class);
+			int i=biz.addArt(t);
+			toPrintJson(response, i);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+
+
 	private void doFindByType(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			Article t = parseRequest(request, Article.class);

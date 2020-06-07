@@ -1,7 +1,5 @@
 package com.blog.dao;
 
-import java.lang.reflect.InvocationTargetException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +11,8 @@ public class ArticleDAO implements BaseDAO<Article>{
 
 	@Override
 	public int add(Article t) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql="insert into article values(null,1,?,now(),?,0,?,null,null) ";
+		return db.update(sql, t.getT_no(),t.getTitle(),t.getA_content());
 	}
 	@Override
 	public List<Article> findByTrem(Article t) throws Exception {

@@ -13,13 +13,16 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
  * 文件上传的工具类
- * @author xj
+ * @author chris
+ * 
+ * 修改版  正版参见fresh
  *
  */
 public class FileUploadUtil {
 	
-	private static final String IMAGEPATH="../fresh_images/";
+	private static final String IMAGEPATH="../blog_images/";
 	private static final String CHARSET="UTF-8";
+	public static String image_path;
 	
 	/**
 	 * 文件上传
@@ -37,6 +40,7 @@ public class FileUploadUtil {
 		//创建T对象
 		T t = cls.newInstance();
 		Method[] methods = cls.getDeclaredMethods();
+		
 		
 		//循环文件项
 		for(FileItem item:items) {
@@ -76,12 +80,13 @@ public class FileUploadUtil {
 				//将文件对象写入磁盘中
 				item.write(file);
 				//获取存储后的文件路径
-				String image_path = IMAGEPATH+fileName;
-				for(Method m:methods) {
-					if (("set"+fieldName).equalsIgnoreCase(m.getName())) {
-						m.invoke(t, image_path);
-					}
-				}
+				 image_path = IMAGEPATH+fileName;
+//				for(Method m:methods) {
+//					if (("set"+fieldName).equalsIgnoreCase(m.getName())) {
+//						m.invoke(t, image_path);
+//					}
+//				}
+				
 			}
 		}
 		return t;

@@ -53,5 +53,15 @@ public class ArticleBiz {
 	public List<Article> findByType(Article t) throws Exception{
 		return dao.findByType(t);
 	}
+	
+	/**
+	 * 添加文章
+	 * @param t
+	 * @return
+	 * @throws Exception
+	 */
+	public int addArt(Article t) throws Exception {
+		return dao.add(t);
+	}
 
 }
