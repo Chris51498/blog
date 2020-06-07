@@ -181,17 +181,17 @@ public class DbHelper {
 	
 	//获取所有列
 	public List<String> getColumnNames(ResultSet rs) throws SQLException{
-		List<String>  list =new ArrayList<String>();
+		List<String>  columnNames =new ArrayList<String>();
 		//获取ResultSetMetaData 
 		ResultSetMetaData data =rs.getMetaData();//获取此 ResultSet 对象的列的编号、类型和属性。
 		int count =data.getColumnCount();
-		//获取所有列名 
+		//获取结果集所有列名 
 		for(int i =1;i<=count;i++){
-			String columnName =data.getColumnLabel(i);//这个可以获取 别名
-			 //添加daolist集合
-			list.add(columnName);
+			 //添加到list集合
+			//columnNames.add(data.getColumnName(i));
+			columnNames.add(data.getColumnLabel(i));
 		}
-		return list;
+		return columnNames;
 	}
 		
 	//设置参数  list集合  
@@ -332,45 +332,29 @@ public class DbHelper {
 			//执行查询操作
 			rs = pstmt.executeQuery();
 			
-			//获取结果集列名
-			List<String>columnNames=getColumnNames(rs);
-			
 			//获取所有的方法
 			Method[] methods = cls.getDeclaredMethods();
-			Object obj = null;	//存储获取的值
-			//String fname = null;	//字段名
+			
+			//获取结果集列名
+			List<String> columnNames = getColumnNames(rs);
 			
 			if(rs.next()) {
 				//创建对象
 				t = cls.newInstance();	//User user  = new User();调用无参构造函数
 				
-				//根据反射处理
-				//循环字段名
-				for(String name:columnNames) {
-					
-					if("serialVersionUID".equalsIgnoreCase(name)) {
-						continue;
-					}
-					//System.out.println("1:" +fname);
-					obj = rs.getObject(name);
-					if (null == obj) {
-						continue;
-					}
-					//String typeName = obj.getClass().getName();	//获取值类型的全路径名称
-					//System.out.println("2、类型：" + typeName);
-					
-					//循环method
-					for(Method m:methods) {
+				//循环method
+				for(Method m:methods) {
+					for(String name:columnNames) {
 						if(("set" + name).equalsIgnoreCase(m.getName())) {
 							//获取该方法的形参的类型
 							String paramterType = m.getParameterTypes()[0].getName();
 							//System.out.println("3:" + paramterType);
 							
-							if("java.lang.Integer".equals(paramterType)) {
+							if("int".equals(paramterType) || "java.lang.Integer".equals(paramterType)) {
 								m.invoke(t, rs.getInt(name));
-							}else if("java.lang.Double".equals(paramterType)) {
+							}else if("double".equals(paramterType) || "java.lang.Double".equals(paramterType)) {
 								m.invoke(t, rs.getDouble(name));
-							}else if("java.lang.Float".equals(paramterType)) {
+							}else if("float".equals(paramterType) || "java.lang.Float".equals(paramterType)) {
 								m.invoke(t, rs.getFloat(name));
 							}else if("java.lang.String".equals(paramterType)) {
 								m.invoke(t, rs.getString(name));
@@ -381,7 +365,6 @@ public class DbHelper {
 					}
 				}
 			}
-			
 		} finally {
 			closeAll(conn, pstmt, rs);
 		}
@@ -414,54 +397,35 @@ public class DbHelper {
 			//执行查询操作
 			rs = pstmt.executeQuery();
 			
-			//获取结果集列名
-			List<String>columnNames=getColumnNames(rs);
-			
 			//获取所有的方法
 			Method[] methods = cls.getDeclaredMethods();
 			
-			Object obj = null;	//存储获取的值
-			//String fname = null;	//字段名
+			//获取结果集列名
+			List<String> columnNames = getColumnNames(rs);
 			
 			while(rs.next()){
 				//创建对象
 				t = cls.newInstance();
 				
-				//根据反射处理
-				//循环字段名
-				for(String name:columnNames) {
-					//fname = f.getName();
-					if("serialVersionUID".equalsIgnoreCase(name)) {
-						continue;
-					}
-					//System.out.println(fname);
-					obj = rs.getObject(name);
-					if(obj == null) {
-						continue;
-					}
-					
-					//obj不为空时
-		//			String typeName = obj.getClass().getName();	//获取值的类型的全路径名称
-					//System.out.println("类型:" + typeName);
-					
-					//循环method
-					for(Method m : methods) {
-						if(("set"+name).equalsIgnoreCase(m.getName())) {
-							//获取该方法的形参类型
-							//形参的数组m.getParameterTypes()
+				//循环method
+				for(Method m:methods) {
+					for(String name:columnNames) {
+						if(("set" + name).equalsIgnoreCase(m.getName())) {
+							//获取该方法的形参的类型
 							String paramterType = m.getParameterTypes()[0].getName();
-							//System.out.println(paramterType);
-							if("java.lang.Integer".equals(paramterType)) {
-								//在具有指定参数的方法对象上调用此方法对象表示的底层方法。 ---set方法
+							//System.out.println("3:" + paramterType);
+							
+							if("int".equals(paramterType) || "java.lang.Integer".equals(paramterType)) {
 								m.invoke(t, rs.getInt(name));
-							}else if("java.lang.Double".equals(paramterType)) {
+							}else if("double".equals(paramterType) || "java.lang.Double".equals(paramterType)) {
 								m.invoke(t, rs.getDouble(name));
-							}else if("java.lang.Float".equals(paramterType)) {
+							}else if("float".equals(paramterType) || "java.lang.Float".equals(paramterType)) {
 								m.invoke(t, rs.getFloat(name));
 							}else if("java.lang.String".equals(paramterType)) {
 								m.invoke(t, rs.getString(name));
-							}
-							break;
+							}//如果实体类中还有其他类型还可以补充
+							
+							break;	//跳出方法的循环
 						}
 					}
 				}

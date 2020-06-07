@@ -42,9 +42,5 @@ class ArticleDAOTest {
 
 	
 	
-	@Test
-	void testFindAll() throws Exception {
-		System.out.println(dao.findAll());
-	}
 
 }

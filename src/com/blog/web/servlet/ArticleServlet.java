@@ -1,6 +1,7 @@
 package com.blog.web.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,6 +31,8 @@ public class ArticleServlet extends BaseServlet {
 			doFindByType(request, response);
 		}else if("addArt".equals(op)) {
 			doAddArt(request, response);
+		}else if("findTypeCount".equals(op)){
+			doFindTypeCount(request, response);
 		}
 	}
 
@@ -50,6 +53,11 @@ public class ArticleServlet extends BaseServlet {
 	}
 
 
+	/**
+	 * 分类查询
+	 * @param request
+	 * @param response
+	 */
 	private void doFindByType(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			Article t = parseRequest(request, Article.class);
@@ -113,6 +121,28 @@ public class ArticleServlet extends BaseServlet {
 			e.printStackTrace();
 		}
 
+	}
+	
+	
+	
+	/**
+	 * 查询各类文章的数量
+	 * @param request
+	 * @param response
+	 */
+	private void doFindTypeCount(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			List<Article> list = biz.findTypeCount();
+			List<Integer> counts = new ArrayList<Integer>();
+			for (Article article : list) {
+				counts.add(article.getCount());
+			}
+			toPrintJson(response, counts);
+		} catch (Exception e) {
+			LogUtil.log.error(e.getMessage());
+			e.printStackTrace();
+		}
+		
 	}
 
 }

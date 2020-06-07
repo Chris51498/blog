@@ -76,31 +76,33 @@
 							
 					        <ul class="dropdown-menu" style="width:210px;height:120px">
 					            <li>
-					                <a href="#" class="list-group-item" style="height:38px;line-height:34px;margin-top:-3px">
+					                <a href="javascript:void(0)" v-on:click="findByType(1)" class="list-group-item" style="height:38px;line-height:34px;margin-top:-3px">
 								       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;Java
 								    </a>
 								</li>
 								
 					            <li>
-					                <a href="#" class="list-group-item" style="height:38px;line-height:34px">
+					                <a href="javascript:void(0)" v-on:click="findByType(2)" class="list-group-item" style="height:38px;line-height:34px">
 								       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;数据库
 								    </a>
 								</li>
 								
 					            <li>
-					                <a href="#" class="list-group-item" style="height:38px;line-height:34px">
+					                <a href="javascript:void(0)" v-on:click="findByType(3)" class="list-group-item" style="height:38px;line-height:34px">
 								       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;前端
 								    </a>
 								</li>
 								
 								<li>
-					                <a href="#" class="list-group-item" style="height:38px;line-height:34px">
+					                <a href="javascript:void(0)" v-on:click="findByType(4)" class="list-group-item" style="height:38px;line-height:34px">
 								       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;生活
 								    </a>
 								</li>
 					        </ul>
 					    </li>
 				    </div>   
+				    
+				    
 				    
 				    
 				    <!-- 左侧第二个框 -->
@@ -117,26 +119,26 @@
 			
 					            <div class="list-group list-group-horizontal" style="margin-bottom:0px">
 					            	<div class="list-group-item" style="padding:0 0 0 1px;width:50px;margin-left:0px;border:0">
-					            		<p style="height:10px;text-align:center;font-weight: bold">5</p>
-					            		<p style="height:10px;text-align:center"><a href="#" style="font-size:13px;color:#999">Java</a></p>
+					            		<p style="height:10px;text-align:center;font-weight: bold">{{counts[0]}}</p>
+					            		<p style="height:10px;text-align:center"><a href="javascript:void(0)" v-on:click="findByType(1)" style="font-size:13px;color:#999">Java</a></p>
 					            	</div>
 					            	
 					            	
 					            	<div class="list-group-item" style="padding:0 0 0 0;width:50px;margin-left:-1px;border:0">
-					            		<p style="height:10px;text-align:center;font-weight: bold">5</p>
-					            		<p style="height:10px;text-align:center"><a href="#" style="font-size:13px;color:#999">数据库</a></p>
+					            		<p style="height:10px;text-align:center;font-weight: bold">{{counts[1]}}</p>
+					            		<p style="height:10px;text-align:center"><a href="javascript:void(0)" v-on:click="findByType(2)" style="font-size:13px;color:#999">数据库</a></p>
 					            	</div>
 					            	
 					            	
 					            	<div class="list-group-item" style="padding:0 0 0 0;width:50px;margin-left:-1px;border:0">
-					            		<p style="height:10px;text-align:center;font-weight: bold">5</p>
-					            		<p style="height:10px;text-align:center"><a href="#" style="font-size:13px;color:#999">前端</a></p>
+					            		<p style="height:10px;text-align:center;font-weight: bold">{{counts[2]}}</p>
+					            		<p style="height:10px;text-align:center"><a href="javascript:void(0)" v-on:click="findByType(3)" style="font-size:13px;color:#999">前端</a></p>
 					            	</div>
 					            	
 					            	
 					            	<div class="list-group-item" style="padding:0 0 0 0;width:49px;margin-left:-1px;border:0">
-					            		<p style="height:10px;text-align:center;font-weight: bold">5</p>
-					            		<p style="height:10px;text-align:center"><a href="#" style="font-size:13px;color:#999">生活</a></p>
+					            		<p style="height:10px;text-align:center;font-weight: bold">{{counts[3]}}</p>
+					            		<p style="height:10px;text-align:center"><a href="javascript:void(0)" v-on:click="findByType(4)" style="font-size:13px;color:#999">生活</a></p>
 					            	</div>
 					               
 					            </div>
@@ -167,30 +169,31 @@
 				    
 				</ul>
 			</div>
-		</div>
 		
-		<!-- list -->
-		<div class="container" style="width: 30%;" id="yc_list_filelist">
-			<div style="width:100%;border: 1px solid #ddd;">
-				<h4 style="width:100%;text-align:center;margin-top:20px;margin-bottom:20px;color:#555">目前共计{{total}}篇文章，继续努力</h4>
-				<hr style="height:1px;border:none;border-top:1px solid #ddd;" />
-				
-					<div class="panel panel-default" style="height:60px;padding-left:25px" v-for="article in articles">
-					    <div class="panel-body">
-					    	<a :href="'article.html#'+article.a_no" style="color:#999">
-						   		<span>{{article.a_time}}</span>
-						        <span>{{article.title}}</span>
-					        </a>
-					    </div>
-					</div>
+		
+			<!-- list -->
+			<div class="container" style="width: 30%;" id="yc_list_filelist">
+				<div style="width:100%;height:900px;border: 1px solid #ddd;">
+					<h4 style="width:100%;text-align:center;margin-top:20px;margin-bottom:20px;color:#555">目前共计{{total}}篇文章，继续努力</h4>
+					<hr style="height:1px;border:none;border-top:1px solid #ddd;" />
 					
-					
+						<div class="panel panel-default" style="height:60px;padding-left:25px" v-for="article in articles">
+						    <div class="panel-body">
+						    	<a :href="'article.html#'+article.a_no" style="color:#999">
+							   		<span>{{article.a_time}}</span>
+							        <span>{{article.title}}</span>
+						        </a>
+						    </div>
+						</div>
+						
+						
+				</div>
 			</div>
-		</div>
-			
-					
+		</div>	
+		
+				
 		<!-- 底部 -->
-		<div id="yc_footer" class="col-md-12 column" style="text-align:center;position:relative;top:50px">
+		<div id="yc_footer" class="col-md-12 column" style="text-align:center;position:fixed;bottom:30px">
 			&copy;
 			<span>2020</span>
 			<span><img src="imgs/user.jpg" style="width:17px;height:17px;padding-bottom:1px;margin-left:5px;margin-right:5px"/></span>
@@ -205,12 +208,17 @@
 	
 	<script type="text/javascript">
 	
+		/* var hash = window.location.hash;
+		var tno = hash.replace("#",'');
+		alert(tno); */
+	
 		//邮箱
 		function email(){
 			alert("xujian_xj@qq.com");
 		}
 		
-	
+		/* 
+		//文章列表
 		var vm = new Vue({
 			el:"#yc_list_filelist",
 			data:{
@@ -223,23 +231,67 @@
 			},
 			
 			mounted:function(){
-				axios.post("article.action",qs.stringify({op:'findAll'}))
-					.then(result=>{
-						this.articles=result.data;
-						this.total=result.data.length;
-					});
+				axios.get("article.action?op=findAll").then(result=>{
+					this.articles=result.data;
+					this.total=result.data.length;
+				});
 			}
 		});
 		
-		
-		
+		 */
+		//左侧导航
 		var personal = new Vue({
-			el:"yc_personal",
+			el:"#yc_personal",
 			data:{
 				total:0,
-				articles:{}
+				articles:{},
+				counts:{}
+			},
+			
+			methods:{
+				findByType:function(id){
+					axios.get("article.action?op=findByType&t_no="+id).then(result=>{
+						this.articles=result.data;
+						this.total=result.data.length;
+						
+						
+					});
+				}
+			},
+			
+			mounted:function(){
+				axios.all([findTypeCount(),findAll()]).then(axios.spread((fn1,fn2)=>{
+						this.counts=fn1.data;
+						
+						this.articles=fn2.data;
+						this.total=fn2.data.length;
+				}));
 			}
+			
 		});
+		
+		
+		/* 
+		//根据分类查询文章
+		function findByType(){
+			return axios.get("article.action?op=findByType&t_no="+tno);
+		}
+		 */
+		 
+		//查询所有文章 
+		function findAll(id){
+			return axios.get("article.action?op=findByType");
+			
+		}
+		
+		  
+		//查询每个类的文章总数
+		function findTypeCount(){
+			return axios.get("article.action?op=findTypeCount");
+			
+		}
+		
+		
 	</script>
 	
 	

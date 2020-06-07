@@ -63,5 +63,16 @@ public class ArticleBiz {
 	public int addArt(Article t) throws Exception {
 		return dao.add(t);
 	}
+	
+	/**
+	 * 查询每类文章数量
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Article> findTypeCount() throws Exception{
+		return dao.findTypeCount();
+	}
+	
+	
 
 }

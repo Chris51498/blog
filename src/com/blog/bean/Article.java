@@ -19,6 +19,8 @@ public class Article implements Serializable{
 	private String a_content;//文章内容
 	private String a_pic;//文章图片
 	private String temp;
+	//======================
+	private Integer count;
 	
 	
 	
@@ -76,6 +78,16 @@ public class Article implements Serializable{
 	public void setTemp(String temp) {
 		this.temp = temp;
 	}
+	
+	
+	
+	public Integer getCount() {
+		return count;
+	}
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+	
 	@Override
 	public String toString() {
 		return "Article [a_no=" + a_no + ", u_no=" + u_no + ", t_no=" + t_no + ", a_time=" + a_time + ", title=" + title

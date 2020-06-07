@@ -67,12 +67,39 @@ public class ArticleDAO implements BaseDAO<Article>{
 	}
 	
 
+	/**
+	 * 根据文章类型查看
+	 * @param t
+	 * @return
+	 * @throws Exception
+	 */
 	public List<Article> findByType(Article t) throws Exception{
-		String sql = "select a_no,u_no,t_no,a_time,title,a_num,a_content,a_pic,temp from article where t_no = ? order by a_time desc";
-		List<Object> params = new ArrayList<>();
-		params.add(t.getT_no());
-		return db.findMutipl(sql, params, Article.class);
+		StringBuffer sb = new StringBuffer();
+		List<Object> params =null;
+		sb.append(" select a_no,u_no,t_no,a_time,title,a_num,a_content,a_pic,temp from article where 1=1 ");
+		if (null!=t) {
+			System.out.println(t);
+			params=new ArrayList<>();
+			if (null!=t.getT_no()) {
+				System.out.println(null!=t.getT_no());
+				sb.append(" and t_no = ? ");
+				params.add(t.getT_no());
+			}
+		}
+		sb.append(" order by a_time desc ");
+		System.out.println(sb.toString());
+		return db.findMutipl(sb.toString(), params, Article.class);
 	}
 	
+	
+	/**
+	 * 查询每类文章数量
+	 * @return
+	 * @throws Exception 
+	 */
+	public List<Article> findTypeCount() throws Exception{
+		String sql = "select t_no ,count(a_no) as count from article group by t_no order by t_no asc";
+		return db.findMutipl(sql, null, Article.class);
+	}
 	
 }
