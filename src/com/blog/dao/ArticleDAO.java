@@ -69,4 +69,12 @@ public class ArticleDAO implements BaseDAO<Article>{
 	}
 	
 
+	public List<Article> findByType(Article t) throws Exception{
+		String sql = "select a_no,u_no,t_no,a_time,title,a_num,a_content,a_pic,temp from article where t_no = ? order by a_time desc";
+		List<Object> params = new ArrayList<>();
+		params.add(t.getT_no());
+		return db.findMutipl(sql, params, Article.class);
+	}
+	
+	
 }

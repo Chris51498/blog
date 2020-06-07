@@ -42,5 +42,16 @@ public class ArticleBiz {
 	public List<Article> findAll() throws Exception{
 		return dao.findAll();
 	}
+	
+	
+	/**
+	 * 根据分类查询文章
+	 * @param t
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Article> findByType(Article t) throws Exception{
+		return dao.findByType(t);
+	}
 
 }

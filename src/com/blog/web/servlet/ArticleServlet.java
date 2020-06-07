@@ -26,10 +26,25 @@ public class ArticleServlet extends BaseServlet {
 			doFindByID(request, response);
 		}else if("findAll".equals(op)){
 			doFindAll(request, response);
+		}else if("findByType".equals(op)){
+			doFindByType(request, response);
 		}
 	}
 
 	
+	private void doFindByType(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			Article t = parseRequest(request, Article.class);
+			List<Article> list = biz.findByType(t);
+			toPrintJson(response, list);
+		} catch (Exception e) {
+			LogUtil.log.error(e.getMessage());
+			e.printStackTrace();
+		}
+		
+	}
+
+
 	/**
 	 * 查看所有文章
 	 * @param request
