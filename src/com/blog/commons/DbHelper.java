@@ -19,9 +19,9 @@ import java.util.Map;
 
 
 public class DbHelper {
-	private Connection conn;
-	private PreparedStatement pstmt;
-	private ResultSet rs;
+	//private Connection conn;
+	//private PreparedStatement pstmt;
+	//private ResultSet rs;
 	// 加载驱动
 	static {
 		try {
@@ -87,6 +87,10 @@ public class DbHelper {
 			throws Exception{
 		List<Map<String, Object>>  list = new ArrayList<Map<String,Object>>();
 		Map<String, Object> map =null;
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
 		try{
 			conn =getConn();
 			pstmt =conn.prepareStatement(sql);
@@ -134,6 +138,9 @@ public class DbHelper {
 	 */
 	public Map<String, Object> findSingle(String sql,List<Object> params) throws Exception{
 		Map<String, Object> map =null;
+		 ResultSet rs = null;
+		 Connection conn = null;
+		 PreparedStatement pstmt = null;
 		try{
 			conn =getConn();
 			pstmt =conn.prepareStatement(sql);
@@ -213,6 +220,8 @@ public class DbHelper {
 	 */
 	public int  update(List<String> sqls,List<List<Object>> params) throws SQLException{
 		int result =0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try{
 			conn =getConn();// 事务自动提交 
 			//事务设置为手动提交 
@@ -257,6 +266,9 @@ public class DbHelper {
 	 */
 	public int update(String sql, Object... params) throws SQLException {
 		int result = 0;
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try{
 			conn = this.getConn();// 获取连接
 			pstmt = conn.prepareStatement(sql);
@@ -290,6 +302,9 @@ public class DbHelper {
 	public double   getPolymer(String sql,List<Object> params) throws SQLException{
 		//System.out.println(sql);
 		double result =0;
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try{
 			conn =getConn();
 			pstmt =conn.prepareStatement(sql);
@@ -321,7 +336,9 @@ public class DbHelper {
 	 */
 	public <T> T find(String sql,List<Object> params,Class<T> cls) throws InstantiationException, IllegalAccessException, SQLException, IllegalArgumentException, InvocationTargetException {
 		T t = null;
-		
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try {
 			conn  = getConn();
 			pstmt = conn.prepareStatement(sql);
@@ -386,6 +403,10 @@ public class DbHelper {
 	 */
 	public <T> List<T> findMutipl( String sql,List<Object> params,Class<T> cls) throws SQLException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		T t = null;
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
 		List<T> list = new ArrayList<>();
 		try {
 			conn  = getConn();
