@@ -351,10 +351,13 @@
 								</ul>
 								
 								
-								<form class="navbar-form navbar-left" role="search">
-									<div class="form-group">
-										<input type="text" class="form-control" />
-									</div> <button type="submit" class="btn btn-default" >搜索</button>
+								<form class="navbar-form navbar-left" >
+									<div class="form-group" style="margin-right:20px">
+										<input type="text" id="yc_content" class="form-control" />
+									</div>
+									<!-- <a href="list.html#content"+$("#yc_content").val()>跳转</a> -->
+									<input type=button class="btn btn-default" value="搜索" onclick="search()")>
+									<!-- <button type="submit" class="btn btn-default" >搜索</button> -->
 								</form>
 								
 								
@@ -397,7 +400,7 @@
 					
 					
 					<!-- 显示文章简介 -->
-				<div class="row clearfix"  id="blog_article">
+				<div class="row clearfix"  id="blog_article" >
 
 					<div class="col-md-6 column" v-for="article in articles">
 						<h2>{{article.title}}</h2>
@@ -607,6 +610,22 @@
 			
 		}	
 	
+		
+		//搜索
+		function search(){
+			var content = $("#yc_content").val();
+			window.location.href = "list.html#search&content="+content;
+			/* 
+			$.ajax({
+				type:"get",
+				url:"article.action?op=search&content="+content,
+				dataType:"json",
+				function(data){
+					
+				}
+			});
+			 */
+		}
 		
 	</script>
 

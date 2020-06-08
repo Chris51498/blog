@@ -33,8 +33,12 @@ public class ArticleServlet extends BaseServlet {
 			doAddArt(request, response);
 		}else if("findTypeCount".equals(op)){
 			doFindTypeCount(request, response);
+		}else if("search".equals(op)){
+			doSearch(request, response);
 		}
 	}
+
+	
 
 	/**
 	 * 添加文章
@@ -145,4 +149,29 @@ public class ArticleServlet extends BaseServlet {
 		
 	}
 
+	
+	/**
+	 * 搜索
+	 * @param request
+	 * @param response
+	 */
+	private void doSearch(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			String content = request.getParameter("content");
+			Article bean = new Article();
+			bean.setTitle(content);
+			bean.setA_content(content);
+			List<Article> list = biz.search(bean);
+			toPrintJson(response, list);
+		} catch (Exception e) {
+			LogUtil.log.error(e.getMessage());
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
+	
 }

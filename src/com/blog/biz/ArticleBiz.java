@@ -74,5 +74,14 @@ public class ArticleBiz {
 	}
 	
 	
+	/**
+	 * 搜索
+	 * @param t
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Article> search(Article t) throws Exception{
+		return dao.search(t);
+	}
 
 }

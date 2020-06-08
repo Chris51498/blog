@@ -1,5 +1,7 @@
 package com.blog.dao;
 
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,6 +100,24 @@ public class ArticleDAO implements BaseDAO<Article>{
 	public List<Article> findTypeCount() throws Exception{
 		String sql = "select t_no ,count(a_no) as count from article group by t_no order by t_no asc";
 		return db.findMutipl(sql, null, Article.class);
+	}
+	
+	
+	/**
+	 * 根据输入的内容搜索
+	 * @param t
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Article> search(Article t) throws Exception{
+		StringBuffer sb = new StringBuffer();
+		List<Object> params = new ArrayList<>();
+		params.add(t.getTitle());
+		params.add(t.getA_content());
+		//sb.append(" select a_no,u_no,t_no,a_time,title,a_num,a_content,a_pic,temp from article where title like '%?%' ");
+		String sql = "select a_no,u_no,t_no,a_time,title,a_num,a_content,a_pic,temp from article where title like "
+				+ "concat('%',?,'%') or a_content like concat('%',?,'%') order by a_time desc";
+		return db.findMutipl(sql, params, Article.class);
 	}
 	
 }
