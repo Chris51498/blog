@@ -57,7 +57,7 @@ public class ArticleDAO implements BaseDAO<Article>{
 
 
 	/**
-	 * 查询所有文章
+	 * 查询所有文章	弃用
 	 * @return
 	 * @throws Exception
 	 */
@@ -78,10 +78,8 @@ public class ArticleDAO implements BaseDAO<Article>{
 		List<Object> params =null;
 		sb.append(" select a_no,u_no,t_no,a_time,title,a_num,a_content,a_pic,temp from article where 1=1 ");
 		if (null!=t) {
-			System.out.println(t);
 			params=new ArrayList<>();
 			if (null!=t.getT_no()) {
-				System.out.println(null!=t.getT_no());
 				sb.append(" and t_no = ? ");
 				params.add(t.getT_no());
 			}

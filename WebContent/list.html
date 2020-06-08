@@ -208,9 +208,8 @@
 	
 	<script type="text/javascript">
 	
-		/* var hash = window.location.hash;
-		var tno = hash.replace("#",'');
-		alert(tno); */
+		var hash = window.location.hash;
+		var id = hash.replace("#",'');
 	
 		//邮箱
 		function email(){
@@ -260,12 +259,21 @@
 			},
 			
 			mounted:function(){
-				axios.all([findTypeCount(),findAll()]).then(axios.spread((fn1,fn2)=>{
+				/* 
+				axios.get("article.action?op=findByType&t_no="+id).then(result=>{
+					this.articles=result.data;
+					this.total=result.data.length;
+				});
+				 */
+				
+				
+				axios.all([findTypeCount(),findAll(id)]).then(axios.spread((fn1,fn2)=>{
 						this.counts=fn1.data;
 						
 						this.articles=fn2.data;
 						this.total=fn2.data.length;
 				}));
+				
 			}
 			
 		});
@@ -274,17 +282,19 @@
 		/* 
 		//根据分类查询文章
 		function findByType(){
-			return axios.get("article.action?op=findByType&t_no="+tno);
+			return axios.get("article.action?op=findByType&t_no="+id);
 		}
 		 */
+		
 		 
+		
 		//查询所有文章 
 		function findAll(id){
-			return axios.get("article.action?op=findByType");
+			return axios.get("article.action?op=findByType&t_no="+id);
 			
 		}
 		
-		  
+		
 		//查询每个类的文章总数
 		function findTypeCount(){
 			return axios.get("article.action?op=findTypeCount");

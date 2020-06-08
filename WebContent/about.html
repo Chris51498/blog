@@ -75,25 +75,25 @@
 						
 				        <ul class="dropdown-menu" style="width:210px;height:120px">
 				            <li>
-				                <a href="#" class="list-group-item" style="height:38px;line-height:34px;margin-top:-3px">
+				                <a href="list.html#1"  class="list-group-item" style="height:38px;line-height:34px;margin-top:-3px">
 							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;Java
 							    </a>
 							</li>
 							
 				            <li>
-				                <a href="#" class="list-group-item" style="height:38px;line-height:34px">
+				                <a href="list.html#2"  class="list-group-item" style="height:38px;line-height:34px">
 							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;数据库
 							    </a>
 							</li>
 							
 				            <li>
-				                <a href="#" class="list-group-item" style="height:38px;line-height:34px">
+				                <a href="list.html#3" class="list-group-item" style="height:38px;line-height:34px">
 							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;前端
 							    </a>
 							</li>
 							
 							<li>
-				                <a href="#" class="list-group-item" style="height:38px;line-height:34px">
+				                <a href="list.html#4" class="list-group-item" style="height:38px;line-height:34px">
 							       <span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;&nbsp;&nbsp;生活
 							    </a>
 							</li>
@@ -115,26 +115,26 @@
 		
 				            <div class="list-group list-group-horizontal" style="margin-bottom:0px">
 				            	<div class="list-group-item" style="padding:0 0 0 1px;width:50px;margin-left:0px;border:0">
-				            		<p style="height:10px;text-align:center;font-weight: bold">5</p>
-				            		<p style="height:10px;text-align:center"><a href="#" style="font-size:13px;color:#999">Java</a></p>
+				            		<p style="height:10px;text-align:center;font-weight: bold">{{counts[0]}}</p>
+				            		<p style="height:10px;text-align:center"><a href="list.html#1" style="font-size:13px;color:#999">Java</a></p>
 				            	</div>
 				            	
 				            	
 				            	<div class="list-group-item" style="padding:0 0 0 0;width:50px;margin-left:-1px;border:0">
-				            		<p style="height:10px;text-align:center;font-weight: bold">5</p>
-				            		<p style="height:10px;text-align:center"><a href="#" style="font-size:13px;color:#999">数据库</a></p>
+				            		<p style="height:10px;text-align:center;font-weight: bold">{{counts[1]}}</p>
+				            		<p style="height:10px;text-align:center"><a href="list.html#2" style="font-size:13px;color:#999">数据库</a></p>
 				            	</div>
 				            	
 				            	
 				            	<div class="list-group-item" style="padding:0 0 0 0;width:50px;margin-left:-1px;border:0">
-				            		<p style="height:10px;text-align:center;font-weight: bold">5</p>
-				            		<p style="height:10px;text-align:center"><a href="#" style="font-size:13px;color:#999">前端</a></p>
+				            		<p style="height:10px;text-align:center;font-weight: bold">{{counts[2]}}</p>
+				            		<p style="height:10px;text-align:center"><a href="list.html#3" style="font-size:13px;color:#999">前端</a></p>
 				            	</div>
 				            	
 				            	
 				            	<div class="list-group-item" style="padding:0 0 0 0;width:49px;margin-left:-1px;border:0">
-				            		<p style="height:10px;text-align:center;font-weight: bold">5</p>
-				            		<p style="height:10px;text-align:center"><a href="#" style="font-size:13px;color:#999">生活</a></p>
+				            		<p style="height:10px;text-align:center;font-weight: bold">{{counts[3]}}</p>
+				            		<p style="height:10px;text-align:center"><a href="list.html#4" style="font-size:13px;color:#999">生活</a></p>
 				            	</div>
 				               
 				            </div>
@@ -189,10 +189,44 @@
 		</div>
 	</body>
 	
+	
+	<script src="js/jquery.min.js"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/axios.js"></script>
+	<script src="js/qs.js"></script>
 	<script type="text/javascript">
 		//邮箱
 		function email(){
 			alert("xujian_xj@qq.com");
 		}
+		
+		
+		
+		
+		//左侧导航  各类文章统计
+		var personal = new Vue({
+			el:"#yc_personal_2",
+			data:{
+				counts:{}
+			},
+			
+			methods:{
+				
+			},
+			
+			mounted:function(){
+				axios.all([findTypeCount()]).then(axios.spread((fn1)=>{
+						this.counts=fn1.data;
+				}));
+			}
+			
+		});
+		
+		  
+		//查询每个类的文章总数
+		function findTypeCount(){
+			return axios.get("article.action?op=findTypeCount");
+			
+		}	
 	</script>
 </html>
