@@ -55,6 +55,130 @@
 				border-bottom-left-radius:0;
 			}
 			
+			ul{
+				list-style-type: none;
+			}
+			
+		.comment-box{
+				
+	   font-size: 14px;
+	   font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+	   color: rgba(0,0,0,.75);
+	   font-variant-ligatures: common-ligatures;
+	   line-height: 1.625;
+	   -webkit-font-smoothing: antialiased;
+	   tab-size: 4;
+	   outline: 0;
+	   font-weight: normal;
+	   -webkit-box-sizing: border-box;
+	   padding: 0;
+	   margin: 0;
+	   margin-top: 1px;
+	   background: #fff;
+	   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
+	   margin-bottom: 8px;
+	   padding-bottom: 8px;
+	   margin-left:542px;
+	   }
+	   
+	  .comment-box .comment-edit-box {
+		 
+	      padding: 16px 24px 8px;
+	      padding-top: 16px;
+	      padding-right: 24px;
+	      padding-bottom: 8px;
+	      padding-left: 24px;
+	  }
+	
+			   
+		.comment-box .comment-edit-box .user-img {
+		    margin-right: 28px;
+			width: 32px;
+			height: 32px;
+			padding-right: 16px;
+		}
+		
+		.user-img{
+			display: inline;
+		}
+	
+		.comment-box .comment-edit-box  .comment-content {
+		    display: block
+		    width: 100%;
+		    padding: 6px 8px;
+		    background: rgba(248,249,251,0.8);
+		    border: 1px solid #dadde0;
+		    border-radius: 4px;
+		    resize: none;
+		    height: 36px;
+		    font-size: 14px;
+		    line-height: 22px;
+		    -webkit-box-sizing: border-box;
+		    box-sizing: border-box;
+		    -webkit-transition: height .3s ease-in-out;
+		    transition: height .3s ease-in-out;
+		}
+		
+	
+		.comment-box .comment-edit-box .bt-comment-show {
+		    width: 80px;
+		    height: 36px;
+		    background-color: #ccccd7;
+		    border-radius: 4px;
+		    font-weight: 500;
+		    color: #fff;
+		    font-size: 14px;
+		    text-align: center;
+		    line-height: 36px;
+		    margin-left: 8px;
+		    border: none;
+		}
+		
+		
+		.comment-list-container{
+			margin-top: 50px;
+		}
+		.comment-box .comment-list-container .comment-list-box {
+		    padding: 0 24px;
+		    overflow: hidden;
+		
+		}
+	   
+	   
+	   .comment-box .comment-list-container .comment-list-box .comment-list {
+	       margin-top: 16px;
+	       border-bottom: 1px solid #e8e8ee;
+	   }
+	   
+	   .comment-box .comment-list-container .comment-list-box .comment-list .comment-line-box {
+	       position: relative;
+	       margin-bottom: 15px;
+	   }
+	   
+	   .comment-box .comment-list-container .comment-list-box .comment-list .comment-line-box .right-box {
+	       position: relative;
+	       width: 100%;
+	       display: -webkit-box;
+	       display: -ms-flexbox;
+	       display: flex;
+	       -webkit-box-align: start;
+	       -ms-flex-align: start;
+	       align-items: flex-start;
+	   }
+	   
+	  .img-small{
+		  width: 32px;
+		  height: 32px;
+	  }
+	  
+	  .myinline{
+		  display: -webkit-box;
+		  display: -ms-flexbox;
+		  display: flex;
+	  }
+			
+			
+		
 </style>
 </head>
 <body>	<!-- 左侧第一个框 -->
@@ -186,8 +310,42 @@
 		<textarea style="display: none;" id="text"></textarea>
 	</div>
 
-
-
+	<div class="comment-box" id="comment">
+		<div class="comment-edit-box form-inline form-group">
+				<div class="user-img form-inline col-md-2">
+					<a><img class="img-small img-circle" :src="user.u_pic"></a><!-- 显示头像 -->
+					<a><span class="nowuser">{{user.nickname}}</span></a>
+				</div>
+			
+				<textarea class="comment-content open col-md-6" v-model="c_content" name="comment_content" id="comment_content" placeholder="优质评论可以帮助作者获得更高权重" maxlength="1000"></textarea>
+				
+				<input type="button" class="bt-comment-show col-md-2" value="评论"   @click="com">
+			</div>
+			
+			<div class="comment-list-container">
+				<div class="comment-list-box">
+					<ul class="comment-list" v-for="comment in  commentvo">
+						<li class="comment-line-box form-inline row">
+							<div class="myinline form-inline">
+							<a><img :src="comment.u_pic" class="img-small img-circle"></a><!-- 显示头像-->
+							<div class="right-box form-inline">
+								<div class="info-box">
+									<a><span class="name">{{comment.nickname}}</span></a><!-- 用户姓名 -->
+									<span>:</span>
+									<span></span>
+									<span class="comment">{{comment.c_content}}</span>
+									<span class="time">{{comment.c_time}}</span>
+								</div>
+							</div>
+						</li>
+						
+						
+						
+					</ul>
+				</div>
+			
+			</div>
+</div>
 
 
 	<script src="js/jquery-3.4.1.min.js"></script>
@@ -231,6 +389,9 @@
 			    			sequenceDiagram : true
 			    		// 默认不解析
 			    		});
+			            
+			            
+			            
 
 				}else{
 					alert("加载文章失败");
@@ -268,7 +429,65 @@
 			
 		}	
 	
+		//评论栏相关信息
+		var comm = new Vue({
+			el:"#comment",
+			data:{
+				user:{},
+				commentvo:{},
+				c_content:''
+			},
+			
+			methods:{
+				com:function(){
+    				//发送axios请求
+    				if(this.c_content==""){
+    					alert("不能发表空白评论！");
+    					return false;
+    				}
+    				axios({
+    					url:'comment.action',
+    					method:'post',
+    					params:{op:'Add',a_no:articleid,c_content:this.c_content}
+    				}).then(result=>{
+    					if(result.data>0){
+    						alert("发布评论成功");
+    						//window.location.href="article.html#"+articleid;
+    						location.reload();
+    					}else{
+    						alert("发布评论失败,未登录不能进行评论，即将跳转到首页！！！");
+    						window.location.href="index.html";
+    					}
+    				});
+    				
+    			}
+			},
+			
+			mounted:function(){
+				axios.all([getUser(),findcom()]).then(axios.spread((fn1,fn2)=>{
+						if(fn1.data==0){
+							alert("您未登录，不能进行评论,请登录");
+						}else{
+							this.user=fn1.data;
+						}
+						if(fn2.data==0){
+							
+						}else{
+							this.commentvo=fn2.data;
+						}
+				}));
+			}
+			
+		});
 		
+		//查询当前用户信息
+		function getUser(){
+			return axios.get("user.action?op=getuser");
+		}
+		//查询所有的评论信息
+		function findcom(){
+			return axios.get("comment.action?op=findcomment&a_no="+articleid);
+		}
 		
 		
 	</script>

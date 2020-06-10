@@ -101,7 +101,6 @@ public class ArticleServlet extends BaseServlet {
 			Article t=parseRequest(request, Article.class);
 			Article article=biz.findByID(t);
 			request.setAttribute("article", article);
-			System.out.println(article);
 			toPrintJson(response, article);
 		} catch (Exception e) {
 			LogUtil.log.error(e.getMessage());

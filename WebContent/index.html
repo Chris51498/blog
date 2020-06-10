@@ -361,9 +361,12 @@
 								</form>
 								
 								
-								<ul class="nav navbar-nav navbar-right">
+								<ul class="nav navbar-nav navbar-right" v-if="outlogin" id="xj">
 									<li><a data-toggle="modal" data-target="#myModal_1" style="color:white">登录</a></li>
 									<li><a data-toggle="modal" data-target="#myModal_2" style="color:white">注册</a></li>
+								</ul>
+								<ul  class="nav navbar-nav navbar-right">
+									<li><a href="javascript:void(0)" style="color:white" v-if="onlogin" >欢迎{{user.nickname}}</a></li>
 								</ul>
 							</div>
 	
@@ -482,6 +485,7 @@
     					}else if(result.data>0){
     						alert("欢迎进入MyBlog");
     						window.location.href="index.html";
+    						$("#xj").hide();
     					}else{
     						alert("登录失败！！");
     					}
@@ -626,6 +630,20 @@
 			});
 			 */
 		}
+		
+		//var header= new Vue({
+		//	el:"#yc_header",
+		//	data:{
+		//		onlogin:false,
+		//		outlogin:true,
+		//		user:{}
+		//	},
+		//	methods:function(){
+		//		
+		//	},
+		//	
+		//	mounted:{}
+		//});
 		
 	</script>
 
