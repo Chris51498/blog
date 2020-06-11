@@ -13,6 +13,7 @@ import com.blog.bean.Comment;
 import com.blog.bean.CommentVO;
 import com.blog.bean.User;
 import com.blog.biz.CommentBiz;
+import com.blog.util.SensitiveWord;
 @WebServlet("/comment.action")
 public class CommentServlet extends BaseServlet{
 	CommentBiz biz=new CommentBiz();
@@ -57,6 +58,11 @@ public class CommentServlet extends BaseServlet{
 	private void doAdd(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			Comment t=parseRequest(request, Comment.class);
+			String content = t.getC_content();
+			SensitiveWord sw = new SensitiveWord();
+			String checkedContent = sw.checkWord(content);
+			System.out.println(checkedContent);
+			t.setC_content(checkedContent);
 			HttpSession session = request.getSession();
 			User user=(User) session.getAttribute("user");
 			t.setU_no(user.getU_no());

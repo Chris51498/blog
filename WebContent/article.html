@@ -306,46 +306,46 @@
 				</ul>
 			</div>
 
-	<div id="test">
+	<div id="test" style="border: 1px solid #ddd;">
 		<textarea style="display: none;" id="text"></textarea>
 	</div>
-
-	<div class="comment-box" id="comment">
-		<div class="comment-edit-box form-inline form-group">
-				<div class="user-img form-inline col-md-2">
-					<a><img class="img-small img-circle" :src="user.u_pic"></a><!-- 显示头像 -->
-					<a><span class="nowuser">{{user.nickname}}</span></a>
+	<div class="comment-box" id="comment" style="width:800px;margin-top:40px;text-align:center">
+		<div class="comment-edit-box form-inline form-group" >
+				<div class="user-img form-inline col-md-2" style="width:auto;text-align:left;margin-right:10px;padding-right:0px">
+					<a><img style="width:25px;height:25px;line-height:32px" class="img-small img-circle" :src="user.u_pic"></a><!-- 显示头像 -->
+					<span class="nowuser" style="font-size:10px;color:#999;line-height:32px;margin-left:5px">{{user.nickname}}</span>
 				</div>
 			
-				<textarea class="comment-content open col-md-6" v-model="c_content" name="comment_content" id="comment_content" placeholder="优质评论可以帮助作者获得更高权重" maxlength="1000"></textarea>
-				
-				<input type="button" class="btn btn-primary " value="评论"   @click="com">
-			</div>
+				<textarea style="width:500px" class="comment-content open col-md-6" v-model="c_content" name="comment_content" id="comment_content" placeholder="优质评论可以帮助作者获得更高权重" maxlength="1000"></textarea>
+				<input style="margin-left:10px;background-color:black;color:#fff" type="button" class="btn btn-primary " value="评论"   @click="com">
+		</div>
 			
-			<div class="comment-list-container">
-				<div class="comment-list-box">
-					<ul class="comment-list" v-for="comment in  commentvo">
-						<li class="comment-line-box form-inline row">
-							<div class="myinline form-inline">
-							<a><img :src="comment.u_pic" class="img-small img-circle"></a><!-- 显示头像-->
-							<div class="right-box form-inline">
-								<div class="info-box">
-									<a><span class="name">{{comment.nickname}}</span></a><!-- 用户姓名 -->
-									<span>:</span>
-									<span></span>
-									<span class="comment">{{comment.c_content}}</span>
-									<span class="time">{{comment.c_time}}</span>
-								</div>
+		<div class="comment-list-container">
+			<div class="comment-list-box">
+				<ul class="comment-list" v-for="comment in  commentvo">
+					<li class="comment-line-box form-inline row">
+						<div class="myinline form-inline">
+						<a><img style="width:25px;height:25px" :src="comment.u_pic" class="img-small img-circle"></a><!-- 显示头像-->
+						<div style="margin-left:10px" class="right-box form-inline">
+							<div class="info-box" style="width:100%;text-align:left">
+								<a><span class="name">{{comment.nickname}}</span></a><!-- 用户姓名 -->
+								<span>:</span>
+								<span></span>
+								<span class="comment">{{comment.c_content}}</span>
+								<span style="float:right" class="time">评论时间：{{comment.c_time}}</span>
 							</div>
-						</li>
-						
-						
-						
-					</ul>
-				</div>
-			
+						</div>
+					</li>
+					
+					
+					
+				</ul>
 			</div>
-</div>
+		
+		</div>
+	</div>
+
+	
 
 
 	<script src="js/jquery-3.4.1.min.js"></script>
@@ -450,6 +450,7 @@
     					method:'post',
     					params:{op:'Add',a_no:articleid,c_content:this.c_content}
     				}).then(result=>{
+    					console.log(result.data);
     					if(result.data>0){
     						alert("发布评论成功");
     						//window.location.href="article.html#"+articleid;
