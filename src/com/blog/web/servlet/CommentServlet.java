@@ -61,7 +61,6 @@ public class CommentServlet extends BaseServlet{
 			String content = t.getC_content();
 			SensitiveWord sw = new SensitiveWord();
 			String checkedContent = sw.checkWord(content);
-			System.out.println(checkedContent);
 			t.setC_content(checkedContent);
 			HttpSession session = request.getSession();
 			User user=(User) session.getAttribute("user");

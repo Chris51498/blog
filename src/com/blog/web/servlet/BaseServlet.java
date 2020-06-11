@@ -78,6 +78,7 @@ public class BaseServlet extends HttpServlet{
 			}
 			//根据字段名获取页面传参数
 			String value = request.getParameter(fname);
+			
 			if(null == value || "".equals(value)) {
 				continue;
 			}
@@ -100,6 +101,7 @@ public class BaseServlet extends HttpServlet{
 					break;	//跳出方法的循环
 				}
 			}
+			
 		}
 		
 		return t;

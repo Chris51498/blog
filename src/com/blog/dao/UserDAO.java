@@ -64,5 +64,34 @@ public class UserDAO implements BaseDAO<User>{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	public List<User> findByNickName(User t) throws Exception {
+		StringBuffer sb = new StringBuffer();
+		sb.append("select u_no,nickname,pwd,email,profession,intro,u_pic,type from user where 1=1 ");
+		List<Object> params = null;
+		if (null!=t) {
+			params = new ArrayList<Object>();
+			if (null!=t.getU_no()) {
+				sb.append(" and u_no = ? ");
+				params.add(t.getU_no());
+			}
+			if (null!=t.getNickname()) {
+				sb.append(" and nickname = ? ");
+				params.add(t.getNickname());
+			}
+			if (null!=t.getPwd()) {
+				sb.append(" and pwd = MD5(?) ");
+				params.add(t.getPwd());
+			}
+			if (null!=t.getEmail()) {
+				sb.append(" and email = ? ");
+				params.add(t.getEmail());
+			}
+			
+		}
+		return db.findMutipl(sb.toString(), params, User.class);
+				
+	}
+
 
 }

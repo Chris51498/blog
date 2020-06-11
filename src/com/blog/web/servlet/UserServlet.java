@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.AbstractDocument.BranchElement;
 
 import com.blog.bean.User;
 import com.blog.biz.UserBiz;
@@ -30,7 +31,30 @@ public class UserServlet extends BaseServlet{
 			doRegister(request,response);
 		}else if("getuser".equals(op)) {
 			doGetUser(request,response);
+		}else if("findAuthor".equals(op)) {
+			doFindAuthor(request,response);
 		}
+	}
+
+	/**
+	 * 判断当前用户是不是作者
+	 * @param request
+	 * @param response
+	 */
+	private void doFindAuthor(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			HttpSession session =request.getSession();
+			User user=(User) session.getAttribute("user");
+			User bean=biz.findAuthor(user);
+			if(bean.getType()==1) {
+				toPrintJson(response, 1);
+			}else {
+				toPrintJson(response, 0);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 
 	/**
@@ -92,13 +116,13 @@ public class UserServlet extends BaseServlet{
 			HttpSession session = request.getSession();
 			String yzm = request.getParameter("yzm");	//用户填写的验证码
 			String validateCode = (String) session.getAttribute("validateCode");	//生成的验证码
-			
 			if (!yzm.equalsIgnoreCase(validateCode)) {
 				toPrintJson(response, -1);
 			}else if(user != null){
 				//用户登录后，存到session
 				session.setAttribute("user", user);
 				toPrintJson(response, 1);
+				
 			}else {
 				toPrintJson(response, 0);
 			}

@@ -45,7 +45,7 @@
 	
 		<!-- 左侧第一个框 -->
 		<div id="yc_personal_1">
-		
+			<div id="Author">
 			<!-- 导航 -->
 			<ul class="list-group">
 				<a href="index.html" class="list-group-item active" style="background:black;text-align:center;height:100px">
@@ -54,17 +54,19 @@
 				</a>
 				
 			    <a href="index.html" class="list-group-item">
-			    	<span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;home
+			    	<span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;Home
 				</a>
 					
 			    <a href="about.html" class="list-group-item">
-					<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;about
+					<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;About
 				</a>
 				
 				<a href="list.html" class="list-group-item">
-			        <span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;file
+			        <span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;File
 			    </a>
-				
+				<a href="post.html" class="list-group-item" v-if="isAuthor">
+				        <span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;Writing
+				    </a>
 			    <!-- 分类下拉列表 -->
 			    <div id="yc_tags">
 				    <li class="dropdown" style="list-style:none;">
@@ -100,7 +102,7 @@
 				        </ul>
 				    </li>
 			    </div>   
-			    
+			    </div>
 			    
 			    <!-- 左侧第二个框 -->
 			    <div id="yc_personal_2" style="width:210px;height:300px;border: 1px solid #ddd;">
@@ -228,5 +230,31 @@
 			return axios.get("article.action?op=findTypeCount");
 			
 		}	
+		
+		
+		//检查用户是否为作者
+		var chris = new Vue({
+			el:"#yc_personal_1",
+			data:{
+				isAuthor:false,
+				
+			},
+			
+			methods:{
+				
+			},
+			
+			mounted:function(){
+				axios.post("user.action?op=findAuthor").then(result=>{
+					if(result.data==0){
+						this.isAuthor=false;
+					}else{
+						this.isAuthor=true;
+						
+					}
+				});
+			}
+			
+		});
 	</script>
 </html>

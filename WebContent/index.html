@@ -58,6 +58,7 @@
 		<!-- 左侧第一个框 -->
 			<div id="yc_personal_1">
 				<!-- 导航 -->
+				<div id="Author">
 				<ul class="list-group">
 					<a href="index.html" class="list-group-item active" style="background:black;text-align:center;height:100px">
 					        <h4 class="list-group-item-heading" style="margin-top:15px">MyBlog</h4>
@@ -65,15 +66,18 @@
 					</a>
 					
 				    <a href="index.html" class="list-group-item">
-				    	<span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;home
+				    	<span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;Home
 					</a>
 						
 				    <a href="about.html" class="list-group-item">
-						<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;about
+						<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;About
 					</a>
 					
 					<a href="list.html" class="list-group-item">
-				        <span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;file
+				        <span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;File
+				    </a>
+				    <a href="post.html" class="list-group-item"  v-if="isAuthor">
+				        <span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;Writing
 				    </a>
 					
 				   <!-- 分类下拉列表 -->
@@ -111,7 +115,7 @@
 					        </ul>
 					    </li>
 				    </div>   
-				    
+				    </div>
 				    
 				    
 				    
@@ -221,7 +225,7 @@
 										</div>
 										
 										<div style="margin-right:45px">
-							                <img src="verifyCodeServlet" id="yzm_img" />
+							                <img src="verifyCodeServlet" id="yzm_img" onclick="change()"/>
 							            </div>
 									</div>
 									
@@ -614,7 +618,7 @@
 		}
 		
 		
-		
+		//检查用户是否登录vue
 		var xj = new Vue({
 			el:"#xj",
 			data:{
@@ -641,6 +645,38 @@
 			}
 			
 		});
+		
+		//检查用户是否为作者
+		var chris = new Vue({
+			el:"#Author",
+			data:{
+				isAuthor:false,
+				
+			},
+			
+			methods:{
+				
+			},
+			
+			mounted:function(){
+				axios.post("user.action?op=findAuthor").then(result=>{
+					if(result.data==0){
+						this.isAuthor=false;
+					}else{
+						this.isAuthor=true;
+						
+					}
+				});
+			}
+			
+		});
+		
+		function change() {            
+			var img = document.getElementById("yzm_img");    
+			//设置时间戳           
+			var date = new Date().getTime();            
+			img.src="verifyCodeServlet?"+date;        
+		}
 		
 	</script>
 

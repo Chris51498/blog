@@ -40,12 +40,11 @@ public class UserBiz {
 	 */
 	public User userlogin(User u) throws Exception {
 		u.setType(0);	//1-管理员		0-用户
-		List<User> list = dao.findByTrem(u);
+		List<User> list = dao.findByNickName(u);
 		if (null!=list && list.size()>0) {
 			return list.get(0);
 		}
 		return null;
-		
 	}
 	
 	
@@ -62,6 +61,22 @@ public class UserBiz {
 			return list.get(0);
 		}
 		return null;
-		
+	}
+	
+	/**
+	 * 找到作者(type为1的用户)
+	 * @param t
+	 * @return
+	 * @throws Exception
+	 */
+	public User findAuthor(User  t) throws Exception {
+		User bean=new User();
+		bean.setU_no(t.getU_no());
+		bean.setType(t.getType());
+		List<User> list = dao.findByTrem(bean);
+		if (null!=list && list.size()>0) {
+			return list.get(0);
+		}
+		return null;
 	}
 }
