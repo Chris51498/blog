@@ -15,6 +15,9 @@ public class UserDAO implements BaseDAO<User>{
 	@Override
 	public int add(User t) throws Exception {
 		String sql = "insert into user values(null,?,MD5(?),?,?,?,?,0,null)";
+		if(t.getU_pic()==null) {
+			t.setU_pic("../user_images/user.jpg");
+		}
 		return db.update(sql, t.getNickname(),t.getPwd(),t.getEmail(),t.getProfession(),t.getIntro(),t.getU_pic());
 	}
 

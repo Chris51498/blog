@@ -66,20 +66,23 @@ public class UserUploadUtil {
 				String fieldName = item.getFieldName();	//获取表单name属性值
 				//获取文件名称
 				String name = item.getName();
-				//文件存储服务器的哪个位置
-				String path = request.getServletContext().getRealPath("/");
-				//文件重名问题
-				UUID uuid = UUID.randomUUID();
-				String fileName = uuid.toString()+""+name;
-				//创建文件对象
-				File file = new File(path,IMAGEPATH+fileName);	//(String parent,String child)
-				//将文件对象写入磁盘中
-				item.write(file);
-				//获取存储后的文件路径
-				String image_path = IMAGEPATH+fileName;
-				for(Method m:methods) {
-					if (("set"+fieldName).equalsIgnoreCase(m.getName())) {
-						m.invoke(t, image_path);
+				
+				if (null!=name && !"".equals(name)) {
+					//文件存储服务器的哪个位置
+					String path = request.getServletContext().getRealPath("/");
+					//文件重名问题
+					UUID uuid = UUID.randomUUID();
+					String fileName = uuid.toString()+""+name;
+					//创建文件对象
+					File file = new File(path,IMAGEPATH+fileName);	//(String parent,String child)
+					//将文件对象写入磁盘中
+					item.write(file);
+					//获取存储后的文件路径
+					String image_path = IMAGEPATH+fileName;
+					for(Method m:methods) {
+						if (("set"+fieldName).equalsIgnoreCase(m.getName())) {
+							m.invoke(t, image_path);
+						}
 					}
 				}
 			}
